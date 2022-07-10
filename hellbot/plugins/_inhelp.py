@@ -125,7 +125,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 )
         elif event.query.user_id in auth and query == "alive":
             uptime = await get_time((time.time() - StartTime))
-            alv_msg = gvarstat("ALIVE_MSG") or "»»» <b>нєℓℓвσт ιѕ σиℓιиє</b> «««"
+            alv_msg = gvarstat("ALIVE_MSG") or "»»» <b>υѕєявσт ιѕ σиℓιиє </b> «««"
             he_ll = alive_txt.format(alv_msg, tel_ver, hell_ver, uptime, abuse_m, is_sudo)
             alv_btn = [
                 [
