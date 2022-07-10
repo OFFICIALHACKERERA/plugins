@@ -63,7 +63,7 @@ async def start_msg(client, pic, version, total):
 <b><i>Clients :</b></i> <code>{str(total)}</code>
 <b><i>Sudo :</b></i> <code>{is_sudo}</code>
 
-<b><i>»» <u><a href='https://t.me/Its_HellBot'>†hê Hêllẞø†</a></u> ««</i></b>
+<b><i>»» <u><a href='https://t.me/Broken_Heart_72'>†hê Hêllẞø†</a></u> ««</i></b>
 """
     await client.send_file(
         Config.LOGGER_ID,
@@ -78,7 +78,7 @@ async def start_msg(client, pic, version, total):
 async def join_it(client):
     if client:
         try:
-            await client(functions.channels.JoinChannelRequest("@Its_HellBot"))
+            await client(functions.channels.JoinChannelRequest("@Broken_Heart_72"))
             await client(functions.messages.ImportChatInviteRequest('bZxlmdNFp1NjMDNh'))
         except BaseException:
             pass
