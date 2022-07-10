@@ -129,7 +129,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             alv_btn = [
                 [
                 Button.url("Channel", f"https://t.me/{my_channel}"), 
-                Button.url("Support ", f"https://t.me/{my_group}")
+                Button.url("Group", f"https://t.me/{my_group}")
               ],
             ]
             a = gvarstat("ALIVE_PIC")
