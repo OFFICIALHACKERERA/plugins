@@ -44,7 +44,7 @@ class Config(object):
     MAX_MESSAGE_SIZE_LIMIT = 4095
     MAX_SPAM = int(os.environ.get("MAX_SPAM", 3))
     MY_CHANNEL = os.environ.get("YOUR_CHANNEL", "Broken_Heart_72")
-    MY_GROUP = os.environ.get("YOUR_GROUP", "HEPPYLIFI)
+    MY_GROUP = os.environ.get("YOUR_GROUP", "HEPPYLIFI")
     OCR_API = os.environ.get("OCR_API", None)
     PLUGIN_CHANNEL = os.environ.get("PLUGIN_CHANNEL", None)
     if PLUGIN_CHANNEL:
