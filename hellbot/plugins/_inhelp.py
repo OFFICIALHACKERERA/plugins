@@ -35,6 +35,7 @@ USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blo
 
 alive_txt = """{}\n
 <b><i>🌹 Bø✞︎ ẞ✞︎α✞︎µѕ 🌹</b></i>
+
 <b>•🦋•✞︎ҽ̀lҽ́ƭhøղ ≈</b>  <i>{}</i>
 <b>•🦋•ѵε૨รเσɳ† ≈</b>  <i>{}</i>
 <b>•🦋•Uptime ≈</b>  <i>{}</i>
