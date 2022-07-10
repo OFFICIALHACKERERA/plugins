@@ -12,45 +12,6 @@ from telethon.tl.functions.channels import LeaveChannelRequest
 from ..sql.gvar_sql import gvarstat
 from . import *
 
-ping_txt = """
-<b><i>╰•★★  ℘ơŋɠ ★★•╯</b></i>
-
-    ⚘  <i>ʂ℘ɛɛɖ :</i> <code>{}</code>
-    ⚘  <i>ų℘ɬıɱɛ :</i> <code>{}</code>
-    ⚘  <i>ơῳŋɛཞ :</i> {}
-"""
-
-
-@hell_cmd(pattern="ping$")
-async def pong(hell):
-    start = datetime.datetime.now()
-    a = gvarstat("PING_PIC")
-    pic_list = []
-    if a:
-        b = a.split(" ")
-        if len(b) >= 1:
-            for c in b:
-                pic_list.append(c)
-        PIC = choice(pic_list)
-    else:
-        PIC = None
-    event = await eor(hell, "`·.·★ ℘ıŋɠ ★·.·´")
-    cid = await client_id(event)
-    ForGo10God, HELL_USER = cid[0], cid[1]
-    hell_mention = f"<a href='tg://user?id={ForGo10God}'>{HELL_USER}</a>"
-    uptime = await get_time((time.time() - StartTime))
-    end = datetime.datetime.now()
-    ms = (end - start).microseconds / 1000
-    if PIC:
-        await event.client.send_file(event.chat_id,
-                                     file=PIC,
-                                     caption=ping_txt.format(ms, uptime, hell_mention),
-                                     parse_mode="HTML",
-                                 )
-        await event.delete()
-    else:
-        await event.edit(ping_txt.format(ms, uptime, hell_mention), parse_mode="HTML")
-
 
 @hell_cmd(pattern="limits$")
 async def is_limited(event):
