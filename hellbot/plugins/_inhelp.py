@@ -34,7 +34,7 @@ LOG_GP = Config.LOGGER_ID
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 
 alive_txt = """{}\n
-<b><i>🏅 𝙱𝚘𝚝 𝚂𝚝𝚊𝚝𝚞𝚜 🏅</b></i>
+<b><i>🌹 Bø✞︎ ẞ✞︎α✞︎µѕ 🌹</b></i>
 <b>•🦋•✞︎ҽ̀lҽ́ƭhøղ ≈</b>  <i>{}</i>
 <b>•🦋•ѵε૨รเσɳ† ≈</b>  <i>{}</i>
 <b>•🦋•Uptime ≈</b>  <i>{}</i>
