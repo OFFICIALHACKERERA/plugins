@@ -57,13 +57,12 @@ async def logger_check(bot):
 async def start_msg(client, pic, version, total):
     is_sudo = "True" if Config.SUDO_USERS else "False"
     text = f"""
-#START
 
-<b><i>Version :</b></i> <code>{version}</code>
-<b><i>Clients :</b></i> <code>{str(total)}</code>
-<b><i>Sudo :</b></i> <code>{is_sudo}</code>
+<b><i>•🌹• Version •🌹• :</b></i> <code>{version}</code>
+<b><i>•🌹• Clients •🌹• :</b></i> <code>{str(total)}</code>
+<b><i>•🌹• Sudo    •🌹• :</b></i> <code>{is_sudo}</code>
 
-<b><i>»» <u><a href='https://t.me/Broken_Heart_72'>†hê Hêllẞø†</a></u> ««</i></b>
+<b><i>»» <u><a href='https://t.me/OFFICIALHACKERERA'> σωɳεɾ </a></u> ««</i></b>
 """
     await client.send_file(
         Config.LOGGER_ID,
