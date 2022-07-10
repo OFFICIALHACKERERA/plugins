@@ -33,7 +33,7 @@ msg = """{}\n
 """
 #-------------------------------------------------------------------------------
 
-@hell_cmd(pattern="alive$")
+@hell_cmd(pattern="hell$")
 async def up(event):
     cid = await client_id(event)
     ForGo10God, HELL_USER, hell_mention = cid[0], cid[1], cid[2]
@@ -58,7 +58,7 @@ async def up(event):
 
 
 
-@hell_cmd(pattern="hell$")
+@hell_cmd(pattern="alive$")
 async def hell_a(event):
     cid = await client_id(event)
     ForGo10God, HELL_USER, hell_mention = cid[0], cid[1], cid[2]
