@@ -3,7 +3,9 @@ import datetime
 
 from . import *
 
-PING_PIC = Config.ALIVE_PIC
+LEGEND_IMG = os.environ.get(
+    "PING_PIC", "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
+)
 
 @bot.on(admin_cmd(pattern="ping$", outgoing=True))
 @bot.on(sudo_cmd(pattern="ping$", allow_sudo=True))
