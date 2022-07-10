@@ -141,7 +141,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                         pic_list.append(c)
                 PIC = random.choice(pic_list)
             else:
-                PIC = "https://telegra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
+                PIC = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
             if PIC and PIC.endswith((".jpg", ".png")):
                 result = builder.photo(
                     PIC,
@@ -242,7 +242,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         else:
             result = builder.article(
-                "@Its_HellBot",
+                "@OFFICIALHACKERERA",
                 text="""**Hey! This is [σffι¢ιαℓ нα¢кєя†](https://t.me/OFFICIALHACKERERA) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
                     [
