@@ -70,7 +70,12 @@ async def start_msg(client, pic, version, total):
         pic,
         caption=text,
         parse_mode="HTML",
-        buttons=[[Button.url("HellBot Network", "https://t.me/HellBot_Network")]],
+        buttons=[
+            [
+            Button.url("Channel", "https://t.me/Broken_Heart_72")
+            Button.url("Support", "https://t.me/HEPPYLIFI")
+           ]
+         ],
     )
 
 
