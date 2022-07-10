@@ -1,8 +1,8 @@
 import asyncio
 import random
 
-from userbot import *
-from userbot.plugins import *
+from hellbot import *
+from hellbot.plugins import *
 
 NUMBER = ["0", "1"]
 
