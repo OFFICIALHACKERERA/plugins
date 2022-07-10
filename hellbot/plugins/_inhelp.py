@@ -127,9 +127,10 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             alv_msg = gvarstat("ALIVE_MSG") or "»»» <b>нєℓℓвσт ιѕ σиℓιиє</b> «««"
             he_ll = alive_txt.format(alv_msg, tel_ver, hell_ver, uptime, abuse_m, is_sudo)
             alv_btn = [
-                [Button.url(f"{HELL_USER}", f"tg://openmessage?user_id={ForGo10God}")],
-                [Button.url("My Channel", f"https://t.me/{my_channel}"), 
-                Button.url("My Group", f"https://t.me/{my_group}")],
+                [
+                Button.url("Channel", f"https://t.me/{my_channel}"), 
+                Button.url("Support ", f"https://t.me/{my_group}")
+              ],
             ]
             a = gvarstat("ALIVE_PIC")
             pic_list = []
