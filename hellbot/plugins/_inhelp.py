@@ -98,7 +98,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             if a:
                 help_pic = a.split(" ")[0]
             else:
-                help_pic = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
+                help_pic = "https://te.legra.ph/file/7c8e0283e814572e8c946.jpg"
             help_msg = f"🔰 **{hell_mention}**\n\n📜 __No.of Plugins__ : `{len(CMD_HELP)}` \n🗂️ __Commands__ : `{len(apn)}`\n🗒️ __Page__ : 1/{veriler[0]}"
             if help_pic == "DISABLE":
                 result = builder.article(
@@ -179,16 +179,17 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                         pic_list.append(c)
                 PIC = random.choice(pic_list)
             else:
-                PIC = "https://telegra.ph/file/58df4d86400922aa32acd.jpg"
+                PIC = "https://te.legra.ph/file/7c8e0283e814572e8c946.jpg"
             if PIC and PIC.endswith((".jpg", ".png")):
                 result = builder.photo(
                     file=PIC,
                     text=HELL_FIRST,
                     buttons=[
-                        [custom.Button.inline("📝 Request Approval", data="req")],
-                        [custom.Button.inline("🚫 Block", data="heheboi")],
-                        [custom.Button.inline("❓ Curious", data="pmclick")],
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                       custom.Button.inline("💬 Chat 💬", data="chat"),
                     ],
+                ],
                     link_preview=False,
                 )
             elif PIC:
@@ -197,10 +198,11 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
                     buttons=[
-                        [custom.Button.inline("📝 Request Approval", data="req")],
-                        [custom.Button.inline("🚫 Block", data="heheboi")],
-                        [custom.Button.inline("❓ Curious", data="pmclick")],
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                       custom.Button.inline("💬 Chat 💬", data="chat"),
                     ],
+                ],
                     link_preview=False,
                 )
             else:
@@ -208,12 +210,15 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     text=HELL_FIRST,
                     title="Hellbot PM Permit",
                     buttons=[
-                        [custom.Button.inline("📝 Request Approval", data="req")],
-                        [custom.Button.inline("🚫 Block", data="heheboi")],
-                        [custom.Button.inline("❓ Curious", data="pmclick")],
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                       custom.Button.inline("💬 Chat 💬", data="chat"),
                     ],
+                ],
                     link_preview=False,
                 )
+                
+                
                 
         elif event.query.user_id in auth and query == "repo":
             result = builder.article(
