@@ -1,3 +1,5 @@
+# --------------------------------------------------------------------------------------------------------------------------------
+
 from telethon.errors import (
     ChannelInvalidError,
     ChannelPrivateError,
@@ -7,7 +9,9 @@ from telethon.tl import functions
 from telethon.tl.functions.channels import GetFullChannelRequest, InviteToChannelRequest
 from telethon.tl.functions.messages import GetFullChatRequest
 
-from . import *
+from LEGENDBOT.utils import admin_cmd, edit_or_reply, eor, sudo_cmd
+from userbot.cmdhelp import CmdHelp
+
 
 async def get_chatinfo(event):
     chat = event.pattern_match.group(1)
@@ -53,83 +57,132 @@ def user_full_name(user):
     return full_name
 
 
-@hell_cmd(pattern="inviteall(?:\s|$)([\s\S]*)")
+@bot.on(admin_cmd(pattern="inviteall ?(.*)"))
+@bot.on(sudo_cmd(pattern="inviteall ?(.*)", allow_sudo=True))
 async def get_users(event):
-    hel_ = event.text[11:]
-    hell_chat = hel_.lower()
-    restricted = ["@hellbot_chat", "@its_hellbot"]
-    hell = await eor(event, f"__Inviting members from__ {hel_}")
-    if hell_chat in restricted:
-        await hell.edit("You can't Invite Members from there.")
-        await event.client.send_message(-1001496036895, "Sorry for inviting members from here.")
+    legen_ = event.text[11:]
+    legend_chat = legen_.lower
+    restricted = ["@Legend_Userbot", "@Official_LegendBot"]
+    legend = await eor(event, f"**Inviting members from** {legen_}")
+    if legend_chat in restricted:
+        await event.edit("You can't Invite Members from there.")
+        await bot.send_message(-1001344140905, "Sorry for inviting members from here.")
         return
-    kraken = await get_chatinfo(event)
+    sender = await event.get_sender()
+    me = await event.client.get_me()
+    if not sender.id == me.id:
+        LEGEND = await edit_or_reply(event, "`processing...`")
+    else:
+        LEGEND = await edit_or_reply(event, "`processing...`")
+    legend = await get_chatinfo(event)
     chat = await event.get_chat()
     if event.is_private:
-        return await hell.edit("`Sorry, Cant add users here`")
+        return await LEGEND.edit("`Sorry, Cant add users here`")
     s = 0
     f = 0
     error = "None"
-    await hell.edit("**INVITING USERS !!**")
-    async for user in event.client.iter_participants(kraken.full_chat.id):
+
+    await LEGEND.edit(
+        "**⚜️[Ͳєямιиαℓ Տτατυѕ](https://t.me/Legend_Userbot)**\n\n`🔸Inviting Users.......`"
+    )
+    async for user in event.client.iter_participants(legend.full_chat.id):
         try:
-            await event.client(
-                InviteToChannelRequest(channel=chat, users=[user.id])
-            )
-            s += 1
-            await hell.edit(
-                f"**INVITING USERS.. **\n\n**Invited :**  `{s}` users \n**Failed to Invite :**  `{f}` users.\n\n**×Error :**  `{error}`"
+            await bot(InviteToChannelRequest(channel=chat, users=[user.id]))
+            s = s + 1
+            await LEGEND.edit(
+                f"🤟**Inviting Users👇 **\n\n**⚜Invited :**  `{s}` users \n**🔰Failed to Invite :**  `{f}` users.\n\n**×Error :**  `{error}`"
             )
         except Exception as e:
             error = str(e)
-            f += 1
-    return await hell.edit(
-        f"**INVITING FINISHED** \n\n**Invited :**  `{s}` users \n**Failed :**  `{f}` users."
+            f = f + 1
+    return await LEGEND.edit(
+        f"[τєямנиαℓ ƒιиιѕнє∂](https://t.me/Legend_Userbot) \n\n🔸 Sυϲϲєѕѕƒυℓℓγ ιиνιτє∂ `{s}` ρєορℓє \n⚠️ ƒαιℓє∂ το ιиνιτє `{f}` ρєορℓє"
     )
 
 
-@hell_cmd(pattern="add(?:\s|$)([\s\S]*)")
+@bot.on(admin_cmd(pattern="invitesall ?(.*)"))
+@bot.on(sudo_cmd(pattern="invitesall ?(.*)", allow_sudo=True))
+async def get_users(event):
+    sender = await event.get_sender()
+    me = await event.client.get_me()
+    if not sender.id == me.id:
+        LEGEND = await edit_or_reply(event, "`processing...`")
+    else:
+        LEGEND = await edit_or_reply(event, "`processing...`")
+    aura = await get_chatinfo(event)
+    chat = await event.get_chat()
+    if event.is_private:
+        return await LEGEND.edit("`Sorry, Cant add users here`")
+    s = 0
+    f = 0
+    error = "None"
+
+    await LEGEND.edit("**TerminalStatus**\n\n`Collecting Users.......`")
+    async for user in event.client.iter_participants(aura.full_chat.id):
+        try:
+            if error.startswith("Too"):
+                return await LEGEND.edit(
+                    f"**Terminal Finished With Error**\n(`May Got Limit Error from telethon Please try agin Later`)\n**Error** : \n`{error}`\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people"
+                )
+            await event.client(
+                functions.channels.InviteToChannelRequest(channel=chat, users=[user.id])
+            )
+            s = s + 1
+            await LEGEND.edit(
+                f"**Terminal Running...**\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people\n\n**× LastError:** `{error}`"
+            )
+        except Exception as e:
+            error = str(e)
+            f = f + 1
+    return await LEGEND.edit(
+        f"**Terminal Finished** \n\n• Successfully Invited `{s}` people \n• failed to invite `{f}` people"
+    )
+
+
+@bot.on(admin_cmd(pattern="add ?(.*)"))
+@bot.on(sudo_cmd(pattern="add ?(.*)", allow_sudo=True))
 async def _(event):
-    if (
-        "addsudo" in event.raw_text.lower()
-        or "addblacklist" in event.raw_text.lower()
-    ):
+    if event.fwd_from:
+        return
+    if "addsudo" in event.raw_text.lower() or "addblacklist" in event.raw_text.lower():
         return
     to_add_users = event.pattern_match.group(1)
     if event.is_private:
-        await eod(event, f"Use `{hl}add` users to a chat, not to a Private Message")
+        await edit_or_reply(event, "`.add` users to a chat, not to a Private Message")
     else:
         logger.info(to_add_users)
         if not event.is_channel and event.is_group:
+            # https://lonamiwebs.github.io/Telethon/methods/messages/add_chat_user.html
             for user_id in to_add_users.split(" "):
                 try:
-                    await event.client(
+                    await borg(
                         functions.messages.AddChatUserRequest(
                             chat_id=event.chat_id, user_id=user_id, fwd_limit=1000000
                         )
                     )
                 except Exception as e:
                     await event.reply(str(e))
-            await eor(event, "Invited User...")
+            await edit_or_reply(event, "Invited Successfully")
         else:
+            # https://lonamiwebs.github.io/Telethon/methods/channels/invite_to_channel.html
             for user_id in to_add_users.split(" "):
                 try:
-                    await event.client(
+                    await borg(
                         functions.channels.InviteToChannelRequest(
                             channel=event.chat_id, users=[user_id]
                         )
                     )
                 except Exception as e:
                     await event.reply(str(e))
-            await eod(event, "Added user to the chat..")
+            await edit_or_reply(event, "Added user to the chat....")
 
 
 CmdHelp("invite").add_command(
-  "add", "<username/id>", "Adds the given user to the group"
+    "add", "<username/id>", "Adds the given user to the group"
 ).add_command(
-  "inviteall", "<group username>", "Scraps user from the targeted group to your group. Basically Kidnapps user from one chat to another"
-).add_info(
-  "Invite them."
-).add_warning(
-  "✅ Harmless Module."
+    "inviteall",
+    "<group username>",
+    "Scraps user from the targeted group to your group. Basically Kidnapps user from one chat to another",
+).add_command(
+    "invitesall", "<group username>", "Kidnap Members. From Group"
 ).add()
