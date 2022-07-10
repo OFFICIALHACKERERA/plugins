@@ -169,7 +169,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         elif event.query.user_id in auth and query == "pm_warn":
             CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
-            HELL_FIRST = "**🔥 Hêllẞø† Prîvã†é Sêçürïty Prø†öçõl 🔥**\n\nHello!! Welcome to {}'s PM. This is an automated message.\n\n{}".format(hell_mention, CSTM_PMP)
+            HELL_FIRST = "**🔥 σffι¢ιαℓ нα¢кєя  Prîvã†é Sêçürïty Prø†öçõl 🔥**\n\nHello!! Welcome to {}'s PM. This is an automated message.\n\n{}".format(hell_mention, CSTM_PMP)
             a = gvarstat("PMPERMIT_PIC")
             pic_list = []
             if a:
@@ -179,15 +179,15 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                         pic_list.append(c)
                 PIC = random.choice(pic_list)
             else:
-                PIC = "https://te.legra.ph/file/7c8e0283e814572e8c946.jpg"
+                PIC = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
             if PIC and PIC.endswith((".jpg", ".png")):
                 result = builder.photo(
                     file=PIC,
                     text=HELL_FIRST,
                     buttons=[
                     [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                       custom.Button.inline("💬 Chat 💬", data="chat"),
+                        custom.Button.inline("🦋 Request 🦋", data="req"),
+                       custom.Button.inline("🚀 Chat 🚀", data="chat"),
                     ],
                 ],
                     link_preview=False,
