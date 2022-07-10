@@ -199,8 +199,8 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     title="Hellbot PM Permit",
                     buttons=[
                     [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                       custom.Button.inline("💬 Chat 💬", data="chat"),
+                        custom.Button.inline("🦋 Request 🦋", data="req"),
+                       custom.Button.inline("🚀 Chat 🚀", data="chat"),
                     ],
                 ],
                     link_preview=False,
@@ -211,8 +211,8 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     title="Hellbot PM Permit",
                     buttons=[
                     [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                       custom.Button.inline("💬 Chat 💬", data="chat"),
+                        custom.Button.inline("🦋 Request 🦋", data="req"),
+                       custom.Button.inline("🚀 Chat 🚀", data="chat"),
                     ],
                 ],
                     link_preview=False,
@@ -242,15 +242,15 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         else:
             result = builder.article(
                 "@Its_HellBot",
-                text="""**Hey! This is [Hêllẞø†](https://t.me/its_hellbot) \nYou can know more about me from the links given below 👇**""",
+                text="""**Hey! This is [σffι¢ιαℓ нα¢кєя†](https://t.me/OFFICIALHACKERERA) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
                     [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/Its_HellBot"),
-                        custom.Button.url("⚡ GROUP ⚡", "https://t.me/hellbot_chat"),
+                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/Broken_Heart_72"),
+                        custom.Button.url("⚡ GROUP ⚡", "https://t.me/HEPPYLIFI"),
                     ],
                     [
-                        custom.Button.url("✨ REPO ✨", "https://github.com/The-HellBot/HellBot"),
-                        custom.Button.url("🔰 TUTORIAL 🔰", "https://youtu.be/M2FQJq_sHp4"),
+                        custom.Button.url("♥️ owner 💫", "https://t.me/OFFICIALHACKERERA"),
+                     
                     ],
                 ],
                 link_preview=False,
