@@ -14,7 +14,7 @@ from hellbot.version import __hell__ as hellver
 
 hl = Config.HANDLER
 
-HELL_PIC = "https://telegra.ph/file/cb0bd62632a3a2b6b2726.jpg"
+HELL_PIC = "https://te.legra.ph/file/12aa46a2c6da5ec20f8ac.jpg"
 
 
 # Client Starter
