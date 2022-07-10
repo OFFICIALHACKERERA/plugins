@@ -412,8 +412,6 @@ async def _(event):
         await event.edit(f"STOPPING RAID BY {ALIVE_NAME}")
 
 
-from userbot.cmdhelp import CmdHelp
-
 CmdHelp("raid").add_command(
     "raid",
     "<Reply to a User With Number>",
