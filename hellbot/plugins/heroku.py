@@ -27,11 +27,11 @@ async def restart(event):
             Heroku
         except BaseException:
             return await eor(event, "`HEROKU_API_KEY` is wrong. Re-Check in config vars.")
-        await eor(event, f"✅ **Restarted Dynos** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
+        await eor(event, f"**Restarted Userbot** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
         app = Heroku.apps()[HEROKU_APP_NAME]
         app.restart()
     else:
-        await eor(event, f"✅ **Restarted USERBOT** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
+        await eor(event, f"**Restarted Userbot** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
         await event.client.disconnect()
 
 
