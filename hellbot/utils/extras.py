@@ -13,15 +13,12 @@ from pathlib import Path
 from time import gmtime, strftime
 
 from telethon import events
-from telethon.tl import functions
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 
-from hellbot import *
-from hellbot.helpers.pasters import pasty
-from hellbot.helpers.int_str import make_int
-from hellbot.config import Config
-from hellbot.sql.gvar_sql import gvarstat
+from d3vilbot import *
+from d3vilbot.helpers import *
+from d3vilbot.config import Config
 
 
 # either edit or reply that msg
@@ -57,8 +54,22 @@ async def edit_or_reply(
             text = re.sub(rf"\{i}", "", text)
     if aslink or deflink:
         linktext = linktext or "Message was to big so pasted to bin"
-        response = await pasty(event, text)
-        text = linktext + f"[BIN]({response['url']}) •• [RAW]({response['raw']})"
+        try:
+            key = (
+                requests.post(
+                    "https://nekobin.com/api/documents", json={"content": text}
+                )
+                .json()
+                .get("result")
+                .get("key")
+            )
+            text = linktext + f" [here](https://nekobin.com/{key})"
+        except Exception:
+            text = re.sub(r"•", ">>", text)
+            kresult = requests.post(
+                "https://del.dog/documents", data=text.encode("UTF-8")
+            ).json()
+            text = linktext + f" [here](https://del.dog/{kresult['key']})"
         if event.sender_id in Config.SUDO_USERS:
             if reply_to:
                 return await reply_to.reply(text, link_preview=link_preview)
@@ -83,13 +94,13 @@ async def edit_or_reply(
 
 
 # delete timeout
-async def delete_hell(event, text, time=None, parse_mode=None, link_preview=None):
+async def delete_d3vil(event, text, time=None, parse_mode=None, link_preview=None):
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
     time = time or 10
     if event.sender_id in Config.SUDO_USERS:
         reply_to = await event.get_reply_message()
-        hellevent = (
+        d3vilevent = (
             await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
             if reply_to
             else await event.reply(
@@ -97,11 +108,10 @@ async def delete_hell(event, text, time=None, parse_mode=None, link_preview=None
             )
         )
     else:
-        hellevent = await event.edit(
+        d3vilevent = await event.edit(
             text, link_preview=link_preview, parse_mode=parse_mode
         )
     await asyncio.sleep(time)
-    return await hellevent.delete()
+    return await d3vilevent.delete()
 
-
-# hellbot
+# d3vilbot
