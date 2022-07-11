@@ -13,9 +13,23 @@ from hellbot.utils import join_it, load_module, logger_check, start_msg, update_
 from hellbot.version import __hell__ as hellver
 
 hl = Config.HANDLER
-
 HELL_PIC = "https://te.legra.ph/file/12aa46a2c6da5ec20f8ac.jpg"
 
+LOAD_ASSISTANT = os.environ.get("LOAD_ASSISTANT",
+
+assistant = os.environ.get("ASSISTANT", None)
+async def assistants():
+    if assistant == "ON":
+        path = "hellbot/assistant/*.py"
+        files = glob.glob(path)
+        for name in files:
+            with open(name) as f:
+                path1 = Path(f.name)
+                shortname = path1.stem
+                start_assistant(shortname.replace(".py", ""))
+
+
+bot.loop.run_until_complete(assistants())
 
 # Client Starter
 async def hells(session=None, client=None, session_name="Main"):
@@ -73,7 +87,7 @@ async def start_hellbot():
         LOGS.info("••• HellBot Startup Completed •••")
         LOGS.info("••• Starting to load Plugins •••")
         await plug_load("hellbot/plugins/*.py")
-        LOAD_ASSISTANT = os.environ.get("LOAD_ASSISTANT",
+        await plug_load("hellbot/plugins/*.py")
         await plug_channel(bot, Config.PLUGIN_CHANNEL)
         LOGS.info("⚡ Your HellBot Is Now Working ⚡")
         LOGS.info("Head to @Its_HellBot for Updates. Also join chat group to get help regarding to HellBot.")
