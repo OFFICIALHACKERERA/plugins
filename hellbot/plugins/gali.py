@@ -9,8 +9,8 @@ async def yashraid(event):
 
         await event.delete()
         kek = event.chat_id
-        await OFFICIALHACKER .send_message(kek, "TERI MA KE JHOPDA ME AAAG LAGA DUNGA ")
-        await OFFICIALHACKER .send_message(kek, "TERI MA KE BHOSDE ME OFFICIAL HACKER KA LUND ")
+        await OFFICIALHACKER.send_message(kek, "TERI MA KE JHOPDA ME AAAG LAGA DUNGA ")
+        await OFFICIALHACKER.send_message(kek, "TERI MA KE BHOSDE ME OFFICIAL HACKER KA LUND ")
         await OFFICIALHACKER .send_message(kek, "TERI MA KI CHOOXT MAARUU BSDKEE")
         await OFFICIALHACKER .send_message(kek, "TERI BHN KA BHOSXDA FAAD DIA MADARCHOD")
         await OFFICIALHACKER .send_message(kek, "TERI BHN KI GANXD ME DYNAMTE LAGA KE UDA DIA")
