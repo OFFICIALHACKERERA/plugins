@@ -41,7 +41,6 @@ alive_txt = """{}\n
 <b>•🌹• Uptime ≈</b>  <i>{}</i>
 <b>•🌹• Ãbûßê ≈</b>  <i>{}</i>
 <b>•🌹• Sudo ≈</b>  <i>{}</i>
-<b>•🌹• Øwñêr</b> <a href='tg://user?id={}'>{}</a> 
 """
 
 def button(page, modules):
