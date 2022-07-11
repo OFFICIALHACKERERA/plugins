@@ -1,4 +1,4 @@
-
+from hellbot import bot as OFFICIALHACKER
 
 x = True
 
