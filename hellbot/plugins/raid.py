@@ -1,8 +1,8 @@
 import asyncio
 import random
 
-from hellbot import *
-from hellbot.plugins import *
+from userbot import *
+from userbot.plugins import *
 
 NUMBER = ["0", "1"]
 
@@ -412,13 +412,15 @@ async def _(event):
         await event.edit(f"STOPPING RAID BY {ALIVE_NAME}")
 
 
+from userbot.cmdhelp import CmdHelp
+
 CmdHelp("raid").add_command(
-  "raid",
-  " <Reply to a User With Number>",
-  " Use and see",
+    "raid",
+    "<Reply to a User With Number>",
+    "Use and see",
+    ".raid 10 reply to anyone message",
+).add_command("replyraid", None, "Reply to him or her to start raid").add_command(
+    "dreplyraid", None, "Reply To her Ya him To stop raid"
+).add_type(
+    "Addons"
 ).add()
-
-
-
-
-
