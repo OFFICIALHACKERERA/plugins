@@ -33,7 +33,7 @@ msg = """{}\n
 """
 #-------------------------------------------------------------------------------
 
-@hell_cmd(pattern="hell$")
+@hell_cmd(pattern="hkr$")
 async def up(event):
     cid = await client_id(event)
     ForGo10God, HELL_USER, hell_mention = cid[0], cid[1], cid[2]
@@ -76,7 +76,7 @@ async def hell_a(event):
 CmdHelp("alive").add_command(
   "alive", None, "Shows the Default Alive Message"
 ).add_command(
-  "hell", None, "Shows Inline Alive Menu with more details."
+  "hkr", None, "Shows Inline Alive Menu with more details."
 ).add_warning(
   "✅ Harmless Module"
 ).add()
