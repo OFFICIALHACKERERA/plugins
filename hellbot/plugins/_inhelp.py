@@ -188,8 +188,8 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     text=HELL_FIRST,
                     buttons=[
                     [
-                        custom.Button.inline("🦋 Request 🦋", data="req"),
-                       custom.Button.inline("🚀 Chat 🚀", data="chat"),
+                        Button.url("Channel", f"https://t.me/{my_channel}"), 
+                        Button.url("Group", f"https://t.me/{my_group}")
                     ],
                 ],
                     link_preview=False,
