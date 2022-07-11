@@ -36,11 +36,11 @@ USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blo
 alive_txt = """{}\n
 <b><i>🌹 Bø✞︎ ẞ✞︎α✞︎µѕ 🌹</b></i>
 
-<b>•🦋•✞︎ҽ̀lҽ́ƭhøղ ≈</b>  <i>{}</i>
-<b>•🦋•ѵε૨รเσɳ† ≈</b>  <i>{}</i>
-<b>•🦋•Uptime ≈</b>  <i>{}</i>
-<b>•🦋•Ãbûßê ≈</b>  <i>{}</i>
-<b>•🦋•Sudo ≈</b>  <i>{}</i>
+<b>•🌹• ✞︎ҽ̀lҽ́ƭhøղ ≈</b>  <i>{}</i>
+<b>•🌹• ѵε૨รเσɳ† ≈</b>  <i>{}</i>
+<b>•🌹• Uptime ≈</b>  <i>{}</i>
+<b>•🌹• Ãbûßê ≈</b>  <i>{}</i>
+<b>•🌹• Sudo ≈</b>  <i>{}</i>
 """
 
 def button(page, modules):
@@ -125,7 +125,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 )
         elif event.query.user_id in auth and query == "alive":
             uptime = await get_time((time.time() - StartTime))
-            alv_msg = gvarstat("ALIVE_MSG") or "»»» <b>υѕєявσт ιѕ σиℓιиє </b> «««"
+            alv_msg = gvarstat("ALIVE_MSG") or "<b>υѕєявσт ιѕ σиℓιиє </b>"
             he_ll = alive_txt.format(alv_msg, tel_ver, hell_ver, uptime, abuse_m, is_sudo)
             alv_btn = [
                 [
@@ -142,7 +142,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                         pic_list.append(c)
                 PIC = random.choice(pic_list)
             else:
-                PIC = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
+                PIC = "https://te.legra.ph/file/d6f9e5d2c18842040ddd4.mp4"
             if PIC and PIC.endswith((".jpg", ".png")):
                 result = builder.photo(
                     PIC,
@@ -171,7 +171,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         elif event.query.user_id in auth and query == "pm_warn":
             CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
-            HELL_FIRST = "**🔥 σffι¢ιαℓ нα¢кєя  Prîvã†é Sêçürïty Prø†öçõl 🔥**\n\nHello!! Welcome to {}'s PM. This is an automated message.\n\n{}".format(hell_mention, CSTM_PMP)
+            HELL_FIRST = "** σffι¢ιαℓ нα¢кєя  Prîvã†é Sêçürïty Prø†öçõl **\n\nHello!! Welcome to {}'s PM. This is an automated message.\n\n{}".format(hell_mention, CSTM_PMP)
             a = gvarstat("PMPERMIT_PIC")
             pic_list = []
             if a:
