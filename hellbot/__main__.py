@@ -30,17 +30,18 @@ async def hells(session=None, client=None, session_name="Main"):
     else:
         return 0
 
-# Load plugins based on config UNLOAD
-async def plug_load(path):
-    files = glob.glob(path)
-    for name in files:
-        with open(name) as hell:
-            path1 = Path(hell.name)
-            shortname = path1.stem
-            if shortname.replace(".py", "") in Config.UNLOAD:
-                os.remove(Path(f"hellbot/assistant/{shortname}.py"))
-            else:
-                load_module(shortname.replace(".py", ""))
+# Assistant.....
+assistant = os.environ.get("ASSISTANT", None)
+async def assistants():
+    if assistant == "ON":
+        path = "d3vilbot/assistant/*.py"
+        files = glob.glob(path)
+        for name in files:
+            with open(name) as f:
+                path1 = Path(f.name)
+                shortname = path1.stem
+                start_assistant(shortname.replace(".py", ""))
+
 
 # Load plugins based on config UNLOAD
 async def plug_load(path):
@@ -83,7 +84,6 @@ async def start_hellbot():
         total = C1 + C2 + C3 + C4 + C5
         LOGS.info("••• HellBot Startup Completed •••")
         LOGS.info("••• Starting to load Plugins •••")
-        await plug_load("hellbot/assistant/*.py")
         await plug_load("hellbot/plugins/*.py")
         await plug_channel(bot, Config.PLUGIN_CHANNEL)
         LOGS.info("⚡ Your HellBot Is Now Working ⚡")
