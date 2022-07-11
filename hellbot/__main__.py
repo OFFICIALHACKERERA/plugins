@@ -6,7 +6,7 @@ from pathlib import Path
 from telethon import Button, TelegramClient
 from telethon.utils import get_peer_id
 
-from hellbot.utils import load_module, start_assistant, load_addons
+
 from hellbot import LOGS, bot, tbot
 from hellbot.clients.session import Hell, H2, H3, H4, H5
 from hellbot.config import Config
@@ -32,17 +32,6 @@ async def hells(session=None, client=None, session_name="Main"):
     else:
         return 0
 
-# Assistant.....
-assistant = os.environ.get("ASSISTANT", None)
-async def assistants():
-    if assistant == "ON":
-        path = "hellbot/assistant/*.py"
-        files = glob.glob(path)
-        for name in files:
-            with open(name) as f:
-                path1 = Path(f.name)
-                shortname = path1.stem
-                start_assistant(shortname.replace(".py", ""))
 
 
 # Load plugins based on config UNLOAD
