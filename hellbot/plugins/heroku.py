@@ -1,23 +1,31 @@
 import asyncio
 import math
 import os
-
 import heroku3
 import requests
 import urllib3
+import sys
+
+from os import execl
+from time import sleep
+from asyncio.exceptions import CancelledError
+
+from ..sql.gvar_sql import addgvar, delgvar, gvarstat
+from . import *
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+heroku_api = "https://api.heroku.com"
+HEROKU_APP_NAME = Config.HEROKU_APP_NAME
+HEROKU_API_KEY = Config.HEROKU_API_KEY
+
 
 
 
 USERID = bot.uid
 mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-# =====================================
-
-Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
-Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
-heroku_api = "https://api.heroku.com"
-HEROKU_APP_NAME = Config.HEROKU_APP_NAME
-HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
