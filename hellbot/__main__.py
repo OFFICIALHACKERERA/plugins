@@ -6,11 +6,13 @@ from pathlib import Path
 from telethon import Button, TelegramClient
 from telethon.utils import get_peer_id
 
+from hellbot.utils import load_module, start_assistant, load_addons
 from hellbot import LOGS, bot, tbot
 from hellbot.clients.session import Hell, H2, H3, H4, H5
 from hellbot.config import Config
 from hellbot.utils import join_it, load_module, logger_check, start_msg, update_sudo, plug_channel
 from hellbot.version import __hell__ as hellver
+
 
 hl = Config.HANDLER
 
