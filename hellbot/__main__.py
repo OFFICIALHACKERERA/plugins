@@ -34,7 +34,7 @@ async def hells(session=None, client=None, session_name="Main"):
 assistant = os.environ.get("ASSISTANT", None)
 async def assistants():
     if assistant == "ON":
-        path = "d3vilbot/assistant/*.py"
+        path = "hellbot/assistant/*.py"
         files = glob.glob(path)
         for name in files:
             with open(name) as f:
