@@ -138,7 +138,7 @@ async def promote(promt):
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
         await LEGENDevent.edit(
-            f"**🔥Promoted ~** [{user.first_name}](tg://user?id={user.id})  **Successfully In** ~ `{promt.chat.title}`!! \n**Admin Tag ~**  `{rank}`"
+            f"**💫 Promoted ~** [{user.first_name}](tg://user?id={user.id})  **Successfully In** ~ `{promt.chat.title}`!! \n**Admin Tag ~**  `{rank}`"
         )
     except BadRequestError:
         await LEGENDevent.edit(NO_PERM)
