@@ -121,12 +121,6 @@ async def metoo(e):
     await eor(e, txt)
 
 
-@hell_cmd(pattern=f"abuse$")
-async def metoo(e):
-    txt = random.choice(ABUSE_STRINGS)
-    await eor(e, txt)
-
-
 @hell_cmd(pattern=f"gey$")
 async def metoo(e):
     txt = random.choice(GEY_STRINGS)
