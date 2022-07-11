@@ -13,8 +13,8 @@ from hellbot.utils import join_it, load_module, logger_check, start_msg, update_
 from hellbot.version import __hell__ as hellver
 
 hl = Config.HANDLER
-HELL_PIC = "https://te.legra.ph/file/12aa46a2c6da5ec20f8ac.jpg"
 
+HELL_PIC = "https://telegra.ph/file/cb0bd62632a3a2b6b2726.jpg"
 
 
 # Client Starter
@@ -30,7 +30,6 @@ async def hells(session=None, client=None, session_name="Main"):
     else:
         return 0
 
-
 # Load plugins based on config UNLOAD
 async def plug_load(path):
     files = glob.glob(path)
@@ -40,6 +39,18 @@ async def plug_load(path):
             shortname = path1.stem
             if shortname.replace(".py", "") in Config.UNLOAD:
                 os.remove(Path(f"hellbot/assistant/{shortname}.py"))
+            else:
+                load_module(shortname.replace(".py", ""))
+
+# Load plugins based on config UNLOAD
+async def plug_load(path):
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as hell:
+            path1 = Path(hell.name)
+            shortname = path1.stem
+            if shortname.replace(".py", "") in Config.UNLOAD:
+                os.remove(Path(f"hellbot/plugins/{shortname}.py"))
             else:
                 load_module(shortname.replace(".py", ""))      
 
@@ -73,6 +84,7 @@ async def start_hellbot():
         LOGS.info("••• HellBot Startup Completed •••")
         LOGS.info("••• Starting to load Plugins •••")
         await plug_load("hellbot/assistant/*.py")
+        await plug_load("hellbot/plugins/*.py")
         await plug_channel(bot, Config.PLUGIN_CHANNEL)
         LOGS.info("⚡ Your HellBot Is Now Working ⚡")
         LOGS.info("Head to @Its_HellBot for Updates. Also join chat group to get help regarding to HellBot.")
