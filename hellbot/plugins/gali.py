@@ -1,6 +1,4 @@
-from userbot import bot as OFFICIAL HACKER 
-from userbot.cmdhelp import CmdHelp
-from userbot.utils import admin_cmd
+
 
 x = True
 
