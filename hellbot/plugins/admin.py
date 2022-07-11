@@ -19,13 +19,9 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from LEGENDBOT.utils import *
-from userbot import *
-from userbot.cmdhelp import CmdHelp
-from userbot.Config import Config
-from userbot.plugins.sql_helper.mute_sql import is_muted
 
 from . import *
+from hellbot.sql.mute_sql import is_muted, mute, unmute
 
 lg_id = Config.LOGGER_ID
 # =================== CONSTANT ===================
