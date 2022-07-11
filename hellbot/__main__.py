@@ -15,7 +15,6 @@ from hellbot.version import __hell__ as hellver
 hl = Config.HANDLER
 HELL_PIC = "https://te.legra.ph/file/12aa46a2c6da5ec20f8ac.jpg"
 
-LOAD_ASSISTANT = os.environ.get("LOAD_ASSISTANT",
 
 assistant = os.environ.get("ASSISTANT", None)
 async def assistants():
