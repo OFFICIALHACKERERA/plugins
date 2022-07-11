@@ -1,9 +1,7 @@
 import asyncio
 
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
-from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 
+from hellbot.sql.mute_sql import is_muted, mute, unmute
 
 @bot.on(admin_cmd(pattern="mute ?(\d+)?", outgoing=True))
 @bot.on(sudo_cmd(pattern="mute ?(\d+)?", allow_sudo=True))
