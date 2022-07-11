@@ -6,14 +6,9 @@ import heroku3
 import requests
 import urllib3
 
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
-from userbot.Config import Config
 
-from . import *
 
 USERID = bot.uid
-DEFAULTUSER = ALIVE_NAME or "ℓєgєи∂ϐοy"
 mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # =====================================
