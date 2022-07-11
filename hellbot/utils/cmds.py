@@ -1,10 +1,10 @@
 import os
-from d3vilbot import CMD_HELP, CMD_HELP_BOT
+from .. import CMD_HELP, CMD_HELP_BOT, CMD_INFO
+from ..config import Config
 
-HANDLER = os.environ.get("HANDLER", r".")
+HANDLER = Config.HANDLER
 
-
-# Made this class for d3vlp menu
+# Made this class for help menu
 class CmdHelp:
     FILE = ""
     ORIGINAL_FILE = ""
@@ -14,6 +14,7 @@ class CmdHelp:
     PREFIX = HANDLER
     WARNING = ""
     INFO = ""
+    EXTRA = {}
 
     def __init__(self, file: str, official: bool = True, file_name: str = None):
         self.FILE = file
@@ -24,6 +25,7 @@ class CmdHelp:
         self.FILE_AUTHOR = ""
         self.WARNING = ""
         self.INFO = ""
+        self.EXTRA = {}
 
     def set_file_info(self, name: str, value: str):
         if name == "name":
@@ -33,10 +35,6 @@ class CmdHelp:
         return self
 
     def add_command(self, command: str, params=None, usage: str = "", example=None):
-        """
-        Inserts commands..
-        """
-
         self.COMMANDS[command] = {
             "command": command,
             "params": params,
@@ -53,11 +51,14 @@ class CmdHelp:
         self.INFO = info
         return self
 
-    def get_result(self):
-        """
-        Brings results.
-        """
+    def add_extra(self, extra: str, content: str):
+        self.EXTRA[extra] = {
+            "extra": extra,
+            "content": content,
+        }
+        return self
 
+    def get_result(self):
         result = f"**📗 File :**  `{self.FILE}`\n"
         if self.INFO == "":
             if not self.WARNING == "":
@@ -65,8 +66,12 @@ class CmdHelp:
         else:
             if not self.WARNING == "":
                 result += f"**⚠️ Warning :**  {self.WARNING}\n"
-            result += f"**ℹ️ Info :**  {self.INFO}\n\n"
-
+            result += f"**ℹ️ Info :**  {self.INFO}\n"
+        if self.EXTRA:
+            for extra in self.EXTRA:
+                extra = self.EXTRA[extra]
+                result += f"**{extra['extra']} :**  `{extra['content']}`\n"
+        result += "\n"
         for command in self.COMMANDS:
             command = self.COMMANDS[command]
             if command["params"] == None:
@@ -81,17 +86,16 @@ class CmdHelp:
                 result += (
                     f"**⌨️ For Example :**  `{HANDLER[:1]}{command['example']}`\n\n"
                 )
+            CMD_INFO[f"{command['command']}"] = {"info": command['usage']}
         return result
 
     def add(self):
-        """
-        Directly adds CMD_HELP.
-        """
         CMD_HELP_BOT[self.FILE] = {
             "info": {
                 "warning": self.WARNING,
                 "info": self.INFO,
             },
+            "extra": self.EXTRA,
             "commands": self.COMMANDS,
         }
         CMD_HELP[self.FILE] = self.get_result()
@@ -105,4 +109,4 @@ class CmdHelp:
         elif text == "USERNAMES":
             return "<user name (s)>"
 
-
+# hellbot
