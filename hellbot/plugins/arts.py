@@ -1,12 +1,8 @@
 import asyncio
 
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import ALIVE_NAME
-from userbot.cmdhelp import CmdHelp
 
 from . import *
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND User"
 
 USERID = bot.uid
 
