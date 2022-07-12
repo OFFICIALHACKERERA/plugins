@@ -430,6 +430,6 @@ CmdHelp("animations3").add_command(
     "music", None, "Use and see"
 ).add_command(
     "squ", None, "Use and see"
-).add_type(
+).add_command(
     "Addons"
 ).add()
