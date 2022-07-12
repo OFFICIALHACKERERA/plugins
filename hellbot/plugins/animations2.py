@@ -445,6 +445,5 @@ CmdHelp("animation2").add_command("boxs", None, "Use and see").add_command(
     "hnd", "<your text>", "A handy animation with the text,"
 ).add_command(
     "padmin", None, "Prank promote a user"
-).add_type(
     "Addons"
 ).add()
