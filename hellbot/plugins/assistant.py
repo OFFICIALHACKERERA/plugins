@@ -66,3 +66,24 @@ async def _(event):
         )
 
 
+
+tgbot.on(events.NewMessage(pattern="^/spam"))
+async def spammer(event):
+    lg_id = Config.LOGGER_ID
+    msg_ = event.text[6:]
+    counter = int(msg_.split(" ")[0])
+    spam_message = msg_.replace(str(counter), "")
+    reply_message = await event.get_reply_message()
+    if counter > 100:
+        return await eor(event, f"To spam more than 100 times use: \n`{hl}bigspam {counter} {spam_message}`")
+    hell = await eor(event, f"Spamming {counter} times...")
+    for i in range(counter):
+        await event.client.send_message(event.chat_id, spam_message, reply_to=reply_message)
+    await hell.delete()
+    await event.client.send_message(lg_id, f"#SPAM \n\nSpammed  `{counter}`  messages!!")
+
+
+
+
+
+
