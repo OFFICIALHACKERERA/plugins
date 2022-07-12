@@ -1,11 +1,6 @@
 import asyncio
 from collections import deque
 
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import *
-from userbot.cmdhelp import CmdHelp
-
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND"
 
 
 @bot.on(admin_cmd(pattern=r"boxs$", outgoing=True))
