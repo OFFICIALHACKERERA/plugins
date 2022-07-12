@@ -72,7 +72,6 @@ async def start(event):
 
 PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
 pm_caption = f"⚜『Lêɠêɳ̃dẞø†』Is Ôñĺîne⚜ \n\n"
-pm_caption += f"Ôwñêř ~ 『{legend_mention}』\n"
 pm_caption += f"**╭───────────**\n"
 pm_caption += f"┣Ťêlethon ~ `1.15.0` \n"
 pm_caption += f"┣『Lêɠêɳ̃dẞø†』~ `{LEGENDversion}` \n"
