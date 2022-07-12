@@ -11,8 +11,6 @@ Available Commands:
 
 import asyncio
 
-from userbot.cmdhelp import CmdHelp
-from userbot.utils import admin_cmd
 
 CmdHelp("fuck").add_command("fuck", None, "Sexy animation").add_command(
     "sux", None, "Sexy animation"
