@@ -33,7 +33,7 @@ LegendBoy = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n   ⚜ {ms}\n   ⚜ ❝𝐌𝐲 
 
 @tgbot.on(events.NewMessage(pattern="^/ping"))
 async def _(event):
-    GOOD = [[Button.url("⚜ Lêɠêɳ̃dẞø† ⚜", "https://t.me/Legend_Userbot")]]
+    GOOD = [[Button.url("⚜ Lêɠêɳ̃dẞø† ⚜", "https://t.me/OFFICIALHACKERERA")]]
     await tgbot.send_file(event.chat_id, LEGEND_IMG, caption=LegendBoy, buttons=GOOD)
 
 
