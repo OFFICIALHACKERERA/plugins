@@ -178,8 +178,6 @@ CmdHelp("anime").add_command(
   "fillers", "<anime name>", "Searches for the filler episodes of given Anime.", "fillers Naruto"
 ).add_command(
   "aniquote", None, "Gives a random quote from Anime."
-).add_info(
   "Anime Module based on Anilist API."
-).add_warning(
   "✅ Harmless Module."
 ).add()
