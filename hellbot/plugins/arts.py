@@ -1,22 +1,39 @@
+import asyncio
+
+from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot import ALIVE_NAME
+from userbot.cmdhelp import CmdHelp
+
 from . import *
 
-@hell_cmd(pattern="carry ([\s\S]*)")
-async def kraken(carry):
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND User"
+
+USERID = bot.uid
+
+mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
+
+
+@bot.on(admin_cmd(pattern="car (.*)"))
+@bot.on(sudo_cmd(pattern="car (.*)", allow_sudo=True))
+async def legend(carry):
+    if carry.fwd_from:
+        return
     name = carry.pattern_match.group(1)
-    await eor(
+    await edit_or_reply(
         carry,
         f"**Carry ~> {name} .**\n\n                     ⣤⣶⣶⣶⣦⣤⣄⡀\n⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀\n⠀⠀⠀⢀⣾⣿⣿⣿⠿⠿⠟⠻⠿⢿⣿⣿⣿⡆\n⠀⠀⠀⢰⣿⣿⡿⠂⠀⠀⠀⠀⠀⠀ ⠈⠉⢻⡇ \n⠀⠀⠀⠈⠿⣿⣇⣠⠤⠤⠤⢤⣀⣤⠤⠤⣺⡏ \n⠀⠀⠀⠀⠐⢉⣯⠹⣀⣀⣢⡸⠉⢏⡄⣀⣯⠁ \n⠀⠀⠀⠀⠡⠀⢹⣆⠀⠀⠀⣀⡀⡰⠀⢠⠖⠂ \n⠀⠀⠀⠀⠀⠈⠙⣿⣿⠀⠠⠚⢋⡁⠀⡜ \n⠀⠀⠀⠀⠀⠀⢸⠈⠙⠦⣤⣀⣤⣤⡼⠁  \n⠀⠀⠀ ⠀⢀⡌⠀⠀⠀⠀ ⠉⢏⡉  \n⠀⠀⠀⣀⣴⣿⣷⣶⣤⣤⣤⣴⣾⣷⣶⣦⡀ \n⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄ \n⠚⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛",
     )
 
 
-@hell_cmd(pattern="ded ([\s\S]*)")
-async def kraken(event):
-    xyz = await client_id(event)
-    hell_mention = xyz[2]
-    name = event.pattern_match.group(1)
-    await eor(
-        event,
-        f"{hell_mention} --- {name}          \n　　　　　|"
+@bot.on(admin_cmd(pattern="ded (.*)"))
+@bot.on(sudo_cmd(pattern="ded (.*)", allow_sudo=True))
+async def legend(ded):
+    if ded.fwd_from:
+        return
+    name = ded.pattern_match.group(1)
+    await edit_or_reply(
+        ded,
+        f"{mention} --- {name}          \n　　　　　|"
         "\n　　　　　| \n"
         "　　　　　| \n"
         "　　　　　| \n"
@@ -33,13 +50,30 @@ async def kraken(event):
     )
 
 
-@hell_cmd(pattern="sthink ([\s\S]*)")
-async def kraken(event):
-    xyz = await client_id(event)
-    hell_mention = xyz[2]
-    name = event.pattern_match.group(1)
+A = (
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+    "⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀⠀\n"
+    "⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀\n"
+    "⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⠟⠀⠀⠀⠀⠀⠀\n"
+    "⠀⠀⠀⠀⠀⠀⠀⠘⠻⣿⣷⣄⠀⠀⠀⠀⠀\n"
+    "⠀⠀⠀⠀⣴⣶⣿⡆⠀⠀⠉⠉⠀⠈⣶⡆⠀\n"
+    "⠀⠀⠀⢠⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⢻⣷⠀\n"
+    "⠀⠀⠀⣼⣿⡿⠟⠀⠀⠀⠀⠀⠀⠀⣸⣿⡄\n"
+    "⠀⠀⠀⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣷\n"
+    "⠀⠀⠘⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⢰⣾⣿⠏\n"
+    "⠀⢠⣧⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠟⠁⠀\n"
+    "⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Ah\n shit, here we go again.\n"
+)
+
+
+@bot.on(admin_cmd(pattern="sthink (.*)"))
+@bot.on(sudo_cmd(pattern="sthink (.*)", allow_sudo=True))
+async def legend(think):
+    if think.fwd_from:
+        return
+    name = think.pattern_match.group(1)
     B = (
-        f"**{hell_mention} ~> {name} .\n\n**"
+        f"**{mention} ~> {name} .\n\n**"
         "⠀⠀⠀⠀⢀⣀⣀⣀\n"
         "⠀⠀⠀⠰⡿⠿⠛⠛⠻⠿⣷\n"
         "⠀⠀⠀⠀⠀⠀⣀⣄⡀⠀⠀⠀⠀⢀⣀⣀⣤⣄⣀⡀\n"
@@ -56,16 +90,17 @@ async def kraken(event):
         "⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁\n"
         "⠀⠀⠛⢿⣿⣿⣿⣿⣿⣿⡿⠟\n"
     )
-    await eor(event, B)
+    await edit_or_reply(think, B)
 
 
-@hell_cmd(pattern="sfrog ([\s\S]*)")
-async def kraken(event):
-    xyz = await client_id(event)
-    hell_mention = xyz[2]
-    name = event.pattern_match.group(1)
+@bot.on(admin_cmd(pattern="sfrog (.*)"))
+@bot.on(sudo_cmd(pattern="sfrog (.*)", allow_sudo=True))
+async def legend(frogsay):
+    if frogsay.fwd_from:
+        return
+    name = frogsay.pattern_match.group(1)
     C = (
-        f"**{hell_mention} ~> {name} .\n\n**"
+        f"**{mention} ~> {name} .\n\n**"
         "⠄⠄⠄⠄⠄⣀⣀⣤⣶⣿⣿⣶⣶⣶⣤⣄⣠⣴⣶⣿⣶⣦⣄⠄\n"
         "⠄⣠⣴⣾⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦\n"
         "⢠⠾⣋⣭⣄⡀⠄⠙⠻⣿⣿⡿⠛⠋⠉⠉⠉⠙⠛⠿⣿⣿⣿⣿\n"
@@ -82,16 +117,17 @@ async def kraken(event):
         "⠄⣿⠁⠄⠐⠛⠛⠛⠉⠉⠉⠉⠄⠄⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⠄⠻⣦⣀⣀⣀⣀⣀⣤⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋\n"
     )
-    await eor(event, C)
+    await edit_or_reply(frogsay, C)
 
 
-@hell_cmd(pattern="sdead ([\s\S]*)")
-async def kraken(event):
-    xyz = await client_id(event)
-    hell_mention = xyz[2]
-    name = event.pattern_match.group(1)
+@bot.on(admin_cmd(pattern="sdead (.*)"))
+@bot.on(sudo_cmd(pattern="sdead (.*)", allow_sudo=True))
+async def legend(deadfrog):
+    if deadfrog.fwd_from:
+        return
+    name = deadfrog.pattern_match.group(1)
     D = (
-        f"**{hell_mention} ~> {name} .\n\n**"
+        f"**{mention} ~> {name} .\n\n**"
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
@@ -108,11 +144,14 @@ async def kraken(event):
         "⠄⠄⠄⠄⠄⠄⠄⠁⠙⠒⠙⠯⠍⠙⢉⣡⣶⣿⣿⣿⣿⣿⣿⣿\n"
         "⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
     )
-    await eor(event, D)
+    await edit_or_reply(deadfrog, D)
 
 
-@hell_cmd(pattern="strump ([\s\S]*)")
-async def kraken(trumpsay):
+@bot.on(admin_cmd(pattern="strump (.*)"))
+@bot.on(sudo_cmd(pattern="strump (.*)", allow_sudo=True))
+async def legend(trumpsay):
+    if trumpsay.fwd_from:
+        return
     name = trumpsay.pattern_match.group(1)
     E = (
         f"**Donald Trump ~> {name} .\n\n**"
@@ -132,11 +171,14 @@ async def kraken(trumpsay):
         "⠄⠄⠄⠄⠄⠄⠄⠄⠹⣿⣿⡇⠄⠄⠸⣿⡄⠄⠈⠁⠄⠄⠄⣿\n"
         "⠄⠄⠄⠄⠄⠄⠄⠄⠄⢻⣿⡇⠄⠄⠄⢹⣧⠄⠄⠄⠄⠄⠄⠘\n"
     )
-    await eor(trumpsay, E)
+    await edit_or_reply(trumpsay, E)
 
 
-@hell_cmd(pattern="schina ([\s\S]*)")
-async def kraken(ckmkb):
+@bot.on(admin_cmd(pattern="schina (.*)"))
+@bot.on(sudo_cmd(pattern="schina (.*)", allow_sudo=True))
+async def legend(ckmkb):
+    if ckmkb.fwd_from:
+        return
     name = ckmkb.pattern_match.group(1)
     F = (
         f"**🅲🅺🅼🅺🅱 ~> {name} .\n\n**"
@@ -157,31 +199,23 @@ async def kraken(ckmkb):
         "⠄⠄⠄⠄⠄⣿⣿⠃⣦⣄⣿⣿⣿⠇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄\n"
         "⠄⠄⠄⠄⢸⣿⠗⢈⡶⣷⣿⣿⡏⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄\n"
     )
-    await eor(ckmkb, F)
+    await edit_or_reply(ckmkb, F)
 
 
-@hell_cmd(pattern="sshit$")
-async def kraken(shit):
-    A = (
-        "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-        "⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀⠀\n"
-        "⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀\n"
-        "⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⠟⠀⠀⠀⠀⠀⠀\n"
-        "⠀⠀⠀⠀⠀⠀⠀⠘⠻⣿⣷⣄⠀⠀⠀⠀⠀\n"
-        "⠀⠀⠀⠀⣴⣶⣿⡆⠀⠀⠉⠉⠀⠈⣶⡆⠀\n"
-        "⠀⠀⠀⢠⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⢻⣷⠀\n"
-        "⠀⠀⠀⣼⣿⡿⠟⠀⠀⠀⠀⠀⠀⠀⣸⣿⡄\n"
-        "⠀⠀⠀⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣷\n"
-        "⠀⠀⠘⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⢰⣾⣿⠏\n"
-        "⠀⢠⣧⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠟⠁⠀\n"
-        "⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Ah\n shit, here we go again.\n"
-    )
-    await eor(shit, A)
+@bot.on(admin_cmd(pattern=r"sshit$"))
+@bot.on(sudo_cmd(pattern="sshit$", allow_sudo=True))
+async def legend(shit):
+    if shit.fwd_from:
+        return
+    await edit_or_reply(shit, A)
 
 
-@hell_cmd(pattern="elove$")
+@bot.on(admin_cmd(pattern=r"elove$"))
+@bot.on(sudo_cmd(pattern="elove$", allow_sudo=True))
 async def kakashi(event):
-    await eor(
+    if event.fwd_from:
+        return
+    await edit_or_reply(
         event,
         "░░▄███▄███▄\n░░█████████\n░░▒▀█████▀░\n░░▒░░▀█▀\n░░▒░░█░\n░░▒░█\n░░░█\n░░█░░░░███████\n░██░░░██▓▓███▓██▒\n██░░░█▓▓▓▓▓▓▓█▓████\n██░░██▓▓▓(◐)▓█▓█▓█\n███▓▓▓█▓▓▓▓▓█▓█▓▓▓▓█\n▀██▓▓█░██▓▓▓▓██▓▓▓▓▓█\n░▀██▀░░█▓▓▓▓▓▓▓▓▓▓▓▓▓█\n░░░░▒░░░█▓▓▓▓▓█▓▓▓▓▓▓█\n░░░░▒░░░█▓▓▓▓█▓█▓▓▓▓▓█\n░▒░░▒░░░█▓▓▓█▓▓▓█▓▓▓▓█\n░▒░░▒░░░█▓▓▓█░░░█▓▓▓█\n░▒░░▒░░██▓██░░░██▓▓██\n██████████████████████\n█─████─▄▄─██─█─██─▄▄─█\n█─██▀█─██─██─█─██─▄█▀█\n█▄▄▄▄▀▄▄▄▄▀▀▄▄▄▀▀▄▄▄▄▀",
     )
@@ -227,7 +261,7 @@ J = (
     "╢┊┊┃┏┳┳━━┓┏┳┫┊┊┣\n"
     "╨━━┗┛┗┛━━┗┛┗┛━━┻\n"
 )
-K = "╔┓┏╦━╦┓╔┓╔━━╗\n" "║┗┛║┗╣┃║┃║X X║\n" "║┏┓║┏╣┗╣┗╣╰╯║\n" "╚┛┗╩━╩━╩━╩━━╝\n"
+
 
 L = (
     "▬▬▬.◙.▬▬▬ \n"
@@ -242,7 +276,7 @@ L = (
     "╬═╬ \n"
     "╬═╬ \n"
     "╬═╬ \n"
-    "╬═╬ Hello, My Friend :D \n"
+    "╬═╬ hello, My Friend :D \n"
     "╬═╬☻/ \n"
     "╬═╬/▌ \n"
     "╬═╬/ \\n"
@@ -430,14 +464,6 @@ Q = (
 )
 
 
-R = (
-    "────██──────▀▀▀██\n"
-    "──▄▀█▄▄▄─────▄▀█▄▄▄\n"
-    "▄▀──█▄▄──────█─█▄▄\n"
-    "─▄▄▄▀──▀▄───▄▄▄▀──▀▄\n"
-    "─▀───────▀▀─▀───────▀▀\n🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ.."
-)
-
 S = (
     "╭━━━┳╮╱╱╭╮╱╭━━━┳━━━╮\n"
     "┃╭━╮┃┃╱╭╯╰╮┃╭━╮┃╭━╮┃\n"
@@ -465,124 +491,192 @@ T = (
 )
 
 
-@hell_cmd(pattern="monster$")
-async def _(monster):
-    await eor(monster, G)
+@bot.on(admin_cmd(pattern=r"monster$"))
+@bot.on(sudo_cmd(pattern="monster$", allow_sudo=True))
+async def bluedevilmonster(monster):
+    if monster.fwd_from:
+        return
+    await edit_or_reply(monster, G)
 
 
-@hell_cmd(pattern="pig$")
-async def _(pig):
-    await eor(pig, H)
+@bot.on(admin_cmd(pattern=r"pig$"))
+@bot.on(sudo_cmd(pattern="pig$", allow_sudo=True))
+async def bluedevilpig(pig):
+    if pig.fwd_from:
+        return
+    await edit_or_reply(pig, H)
 
 
-@hell_cmd(pattern="gun$")
-async def _(gun):
-    await eor(gun, I)
+@bot.on(admin_cmd(pattern=r"gun$"))
+@bot.on(sudo_cmd(pattern="gun$", allow_sudo=True))
+async def bluedevilgun(gun):
+    if gun.fwd_from:
+        return
+    await edit_or_reply(gun, I)
 
 
-@hell_cmd(pattern="dog$")
-async def _(dog):
-    await eor(dog, J)
+@bot.on(admin_cmd(pattern=r"dog$"))
+@bot.on(sudo_cmd(pattern="dog$", allow_sudo=True))
+async def bluedevildog(dog):
+    if dog.fwd_from:
+        return
+    await edit_or_reply(dog, J)
 
 
-@hell_cmd(pattern="hello$")
-async def _(hello):
-    await eor(hello, K)
+HELL_PIC = "https://te.legra.ph/file/b86eff074051b0b2d4513.jpg"
+K_PIC = "https://te.legra.ph/file/a679e3d061ac6b349cd60.jpg"
+L_PIC = "https://te.legra.ph/file/96c2b61d6361f112ceac5.jpg"
+M_PIC = "https://te.legra.ph/file/4d0c641e085f7ed15dfec.jpg"
 
 
-@hell_cmd(pattern="hmf$")
-async def _(hmf):
-    await eor(hmf, L)
+@borg.on(admin_cmd(outgoing=True, pattern="^Hello$"))
+@borg.on(sudo_cmd(pattern="^Hello$", allow_sudo=True))
+async def bluedevilhello(hello):
+    if hello.fwd_from:
+        return
+    await hello.get_chat()
+    good = await eor(hello, "**(❛ Hi ❜!**")
+    if HELL_PIC:
+        HELLO = f"╔┓┏╦━╦┓╔┓╔━━╗\n"
+        HELLO += f"║┗┛║┗╣┃║┃║X X ║\n"
+        HELLO += f"║┏┓║┏╣┗╣┗╣╰╯║\n"
+        HELLO += f"╚┛┗╩━╩━╩━╩━━╝\n"
+        on = await borg.send_file(hello.chat_id, file=HELL_PIC, caption=HELLO)
+        await asyncio.sleep(3)
+        ok = await borg.edit_message(hello.chat_id, on, file=K_PIC)
+        await asyncio.sleep(3)
+        ok1 = await borg.edit_message(hello.chat_id, on, file=L_PIC)
+        await asyncio.sleep(3)
+        ok2 = await borg.edit_message(hello.chat_id, ok1, file=M_PIC)
+        await asyncio.sleep(5)
+        ok3 = await borg.edit_message(hello.chat_id, ok2, file=L_PIC)
+        await asyncio.sleep(5)
+        ok4 = await borg.edit_message(hello.chat_id, ok3, file=K_PIC)
+        await asyncio.sleep(5)
+        ok5 = await borg.edit_message(hello.chat_id, ok4, file=HELL_PIC)
+        await good.delete()
 
 
-@hell_cmd(pattern="couple$")
-async def _(couple):
-    await eor(couple, M)
+@bot.on(admin_cmd(pattern=r"hmf$"))
+@bot.on(sudo_cmd(pattern="hmf$", allow_sudo=True))
+async def bluedevilhmf(hmf):
+    if hmf.fwd_from:
+        return
+    await edit_or_reply(hmf, L)
 
 
-@hell_cmd(pattern="sup$")
-async def _(supreme):
-    await eor(supreme, N)
+@bot.on(admin_cmd(pattern=r"couple$"))
+@bot.on(sudo_cmd(pattern="couple$", allow_sudo=True))
+async def bluedevilcouple(couple):
+    if couple.fwd_from:
+        return
+    await edit_or_reply(couple, M)
 
 
-@hell_cmd(pattern="india$")
-async def _(event):
-    await eor(event, O)
+@bot.on(admin_cmd(pattern=r"sup$"))
+@bot.on(sudo_cmd(pattern="sup$", allow_sudo=True))
+async def bluedevilsupreme(supreme):
+    if supreme.fwd_from:
+        return
+    await edit_or_reply(supreme, N)
 
 
-@hell_cmd(pattern="wc$")
-async def _(welcome):
-    await eor(welcome, P)
+@bot.on(admin_cmd(pattern=r"india$"))
+@bot.on(sudo_cmd(pattern="india$", allow_sudo=True))
+async def bluedevilindia(event):
+    if event.fwd_from:
+        return
+    await edit_or_reply(event, O)
 
 
-@hell_cmd(pattern="snk$")
-async def _(snake):
-    await eor(snake, Q)
+@bot.on(admin_cmd(pattern=r"wc$"))
+@bot.on(sudo_cmd(pattern="wc$", allow_sudo=True))
+async def bluedevilwelcome(welcome):
+    if welcome.fwd_from:
+        return
+    await edit_or_reply(welcome, P)
 
 
-@hell_cmd(pattern="bye$")
-async def _(bye):
-    await eor(bye, R)
+@bot.on(admin_cmd(pattern=r"snk$"))
+@bot.on(sudo_cmd(pattern="snk$", allow_sudo=True))
+async def bluedevilsnake(snake):
+    if snake.fwd_from:
+        return
+    await edit_or_reply(snake, Q)
 
 
-@hell_cmd(pattern="shitos$")
-async def _(shitos):
-    await eor(shitos, S)
+BYE_PIC = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
 
 
-@hell_cmd(pattern="dislike$")
-async def _(dislike):
-    await eor(dislike, T)
+@bot.on(admin_cmd(outgoing=True, pattern="bye$"))
+@bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
+async def bluedevilbye(bye):
+    if bye.fwd_from:
+        return
+    if BYE_PIC:
+        BYE = f"🚶🏻‍♂️🚶🏻‍♂️ɮʏɛ ʄʀɨɛռɖֆ..."
+
+        bye = await edit_or_reply(bye, "**(❛ Bye ❜!**")
+        await bye.client.send_file(bye.chat_id, BYE_PIC, caption=BYE)
+        await bye.delete()
 
 
-CmdHelp("arts").add_command(
-  'elove', None, 'Use and see'
+@bot.on(admin_cmd(pattern=r"shitos$"))
+@bot.on(sudo_cmd(pattern="shitos$", allow_sudo=True))
+async def bluedevilshitos(shitos):
+    if shitos.fwd_from:
+        return
+    await edit_or_reply(shitos, S)
+
+
+@bot.on(admin_cmd(pattern=r"dislike$"))
+@bot.on(sudo_cmd(pattern="dislike$", allow_sudo=True))
+async def bluedevildislike(dislike):
+    if dislike.fwd_from:
+        return
+    await edit_or_reply(dislike, T)
+
+
+CmdHelp("arts").add_command("elove", None, "Use and see").add_command(
+    "monster", None, "Use and see"
+).add_command("pig", None, "Use and see").add_command(
+    "gun", None, "Use and see"
 ).add_command(
-  'monster', None, 'Use and see'
+    "dog", None, "Use and see"
 ).add_command(
-  'pig', None, 'Use and see'
+    "^Hello", None, "Use and see"
 ).add_command(
-  'gun', None, 'Use and see'
+    "hmf", None, "Use and see"
 ).add_command(
-  'dog', None, 'Use and see'
+    "couple", None, "Use and see"
 ).add_command(
-  'hello', None, 'Use and see'
+    "sup", None, "Use and see"
 ).add_command(
-  'hmf', None, 'Use and see'
+    "india", None, "Use and see"
 ).add_command(
-  'couple', None, 'Use and see'
+    "wc", None, "Use and see"
 ).add_command(
-  'sup', None, 'Use and see'
+    "snk", None, "Use and see"
 ).add_command(
-  'india', None, 'Use and see'
+    "bye", None, "Use and see"
 ).add_command(
-  'wc', None, 'Use and see'
+    "shitos", None, "Use and see"
 ).add_command(
-  'snk', None, 'Use and see'
+    "dislike", None, "Use and see"
 ).add_command(
-  'bye', None, 'Use and see'
+    "car", "<text>", "send your text with carry art"
 ).add_command(
-  'shitos', None, 'Use and see'
+    "ded", "<text>", "Hang yourself"
 ).add_command(
-  'dislike', None, 'Use and see'
+    "sthink", "<text>", "Send your text in thinking art"
 ).add_command(
-  'carry', '<text>', 'send your text with carry art'
+    "sfrog", "<text>", "Send your text in frog art"
 ).add_command(
-  'ded', '<text>', 'Hang yourself'
+    "sdead", "<text>", "Send your text in dear frog art"
 ).add_command(
-  'sthink', '<text>', 'Send your text in thinking art'
+    "strump", "<text>", "Send your text in trump art"
 ).add_command(
-  'sfrog', '<text>', 'Send your text in frog art'
+    "china", "<text>", "Send your text in china art"
 ).add_command(
-  'sdead', '<text>', 'Send your text in dear frog art'
-).add_command(
-  'strump', '<text>', 'Send your text in trump art'
-).add_command(
-  'china', '<text>', 'Send your text in china art'
-).add_command(
-  'sshit', None, 'Send a art in "Ahh shit. Here we go again"'
-).add_info(
-  'Artistic Module'
-).add_warning(
-  '✅ Harmless Module.'
+    "sshit", None, 'Send a art in "Ahh shit. Here we go again"'
 ).add()
