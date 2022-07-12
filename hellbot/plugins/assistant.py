@@ -19,57 +19,6 @@ from telethon.tl.types import (
 
 
 
-
-
-
-
-
-
-@tgbot.on(events.NewMessage(pattern="^/start"))
-async def start(event):
-    starkbot = await tgbot.get_me()
-    bot_id = starkbot.first_name
-    starkbot.username
-    replied_user = await event.client(GetFullUserRequest(event.sender_id))
-    firstname = replied_user.user.first_name
-    vent = event.chat_id
-    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nI Can Deliver Message To My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [『Lêɠêɳ̃dẞø†』](https://t.me/Official_LegendBot)"
-    if event.sender_id == bot.uid:
-        await tgbot.send_message(
-            vent,
-            message=f"Hi Sir/Miss, It's Me {bot_id}, Your Assistant ! \nHow Can I help U?",
-            buttons=[
-                [
-                    Button.url(" Support ", "https://t.me/Legend_Userbot"),
-                    Button.url(" Updates ", "https://t.me/Official_LegendBot"),
-                ],
-                [
-                    custom.Button.inline("Users", data="users"),
-                    custom.Button.inline("Settings", data="osg"),
-                ],
-                [custom.Button.inline("Hack", data="hack")],
-            ],
-        )
-    else:
-        if already_added(event.sender_id):
-            pass
-        elif not already_added(event.sender_id):
-            add_usersid_in_db(event.sender_id)
-        await tgbot.send_message(
-            event.chat_id,
-            message=starttext,
-            link_preview=False,
-            buttons=[
-                [
-                    custom.Button.inline(" Rules ", data="rules"),
-                    Button.url(" Support ", "https://t.me/Legend_Userbot"),
-                ],
-                [custom.Button.inline("Deploy Your LegendBot", data="deploy")],
-            ],
-        )
-
-
-
 PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
 pm_caption = f"⚜『Lêɠêɳ̃dẞø†』Is Ôñĺîne⚜ \n\n"
 pm_caption += f"**╭───────────**\n"
