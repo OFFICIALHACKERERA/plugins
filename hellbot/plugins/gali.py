@@ -185,6 +185,7 @@ async def yashraid(event):
         await OFFICIALHACKER .send_message(kek, "CHHHOOOODDDD DENGE")
         await OFFICIALHACKER .send_message(kek, "TUMMM JESEE KITNOOO")
         await OFFICIALHACKER .send_message(kek, "KOOO CHOOOOOOODDDDD KRRR CHOD DIYAA GANDUUU")
+        await OFFICIALHACKER .send_message(kek, "OFFICIAL HACKER TERA PAPA")
         await OFFICIALHACKER .send_message(
             kek,
             "TELEGRAM ME RAHNA HAI TO OFFICIAL HACKER  KO PAPA BOLNA PAREGA WARNA TUMHARII BHN CHODEGI AISE HI ROJ",
