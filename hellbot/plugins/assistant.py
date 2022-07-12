@@ -1,8 +1,6 @@
 import os
-import asyncio
 from telethon import Button, events
-from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
-from telethon.tl.types import ChannelParticipantsAdmins
+
 
 
 
