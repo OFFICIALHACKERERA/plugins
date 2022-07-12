@@ -19,17 +19,14 @@ from telethon.tl.types import (
 
 
 
-PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
-pm_caption = f"⚜『Lêɠêɳ̃dẞø†』Is Ôñĺîne⚜ \n\n"
+PM_IMG = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
+pm_caption = f"⚜『Assistant』Is Ôñĺîne⚜ \n\n"
 pm_caption += f"**╭───────────**\n"
 pm_caption += f"┣Ťêlethon ~ `1.15.0` \n"
-pm_caption += f"┣『Lêɠêɳ̃dẞø†』~ [Channel](https://t.me/Its_LegendBot)\n"
-pm_caption += f"┣Çhâññel ~ [Channel](https://t.me/Its_LegendBot)\n"
-pm_caption += f"┣**License** ~ [License v3.0](github.com/The-LegendBot/LEGENBOT/blob/master/LICENSE)\n"
-pm_caption += f"┣Copyright ~ By [『Lêɠêɳ̃dẞø†』 ](https://t.me/Legend_Userbot)\n"
-pm_caption += f"┣Assistant ~ By [『Lêɠêɳ̃dẞøy』 ](https://t.me/Its_LegendBoy)\n"
+pm_caption += f"┣Çhâññel ~ [Channel](https://t.me/Broken_Heart_72)\n"
+pm_caption += f"┣Support ~ [『join』 ](https://t.me/HEPPYLIFI)\n"
+pm_caption += f"┣Assistant ~ By [『OFFICIAL HACKER』 ](https://t.me/OFFICIALHACKERERA)\n"
 pm_caption += f"╰────────────\n"
-pm_caption += f"       »»» [『Lêɠêɳ̃dẞø†』](https://t.me/Legend_Userbot) «««"
 
 
 @tgbot.on(events.NewMessage(pattern="^/alive"))
@@ -42,7 +39,7 @@ async def _(event):
 
 
 LEGEND_IMG = os.environ.get(
-    "BOT_PING_PIC", "https://telegra.ph/file/a9f6a3c160977352dd595.jpg"
+    "BOT_PING_PIC", "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
 )
 ms = 4
 ALIVE = Config.ALIVE_NAME
@@ -52,7 +49,7 @@ LegendBoy = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n   ⚜ {ms}\n   ⚜ ❝𝐌𝐲 
 
 @tgbot.on(events.NewMessage(pattern="^/ping"))
 async def _(event):
-    GOOD = [[Button.url("⚜ Lêɠêɳ̃dẞø† ⚜", "https://t.me/Legend_Userbot")]]
+    GOOD = [[Button.url("⚜ OFFICIAL HACKER ⚜", "https://t.me/OFFICIAL HACKER")]]
     await tgbot.send_file(event.chat_id, LEGEND_IMG, caption=LegendBoy, buttons=GOOD)
 
 
