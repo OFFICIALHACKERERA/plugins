@@ -76,6 +76,19 @@ async def _(event):
 
 #...........................purge
 
+OWNER_ID = bot.uid
+# Check if user has admin rights
+async def is_administrator(user_id: int, message):
+    admin = False
+    async for user in tgbot.iter_participants(
+        message.chat_id, filter=ChannelParticipantsAdmins
+    ):
+        if user_id == user.id or OWNER_ID or SUDO_USERS:
+            admin = True
+            break
+    return admin
+
+
 @tgbot.on(events.NewMessage(pattern="^/purge"))
 async def purge(event):
     chat = event.chat_id
