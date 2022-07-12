@@ -28,7 +28,6 @@ pm_caption += f"┣Support ~ [『join』 ](https://t.me/HEPPYLIFI)\n"
 pm_caption += f"┣Assistant ~ By [『OFFICIAL HACKER』 ](https://t.me/OFFICIALHACKERERA)\n"
 pm_caption += f"╰────────────\n"
 
-
 @tgbot.on(events.NewMessage(pattern="^/alive"))
 async def _(event):
     await tgbot.send_file(event.chat_id, PM_IMG, caption=pm_caption)
@@ -45,7 +44,6 @@ ms = 4
 ALIVE = Config.ALIVE_NAME
 
 LegendBoy = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n   ⚜ {ms}\n   ⚜ ❝𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫❞ ~『{ALIVE}』"
-
 
 @tgbot.on(events.NewMessage(pattern="^/ping"))
 async def _(event):
