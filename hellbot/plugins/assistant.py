@@ -1,6 +1,7 @@
 import os
 import asyncio
 from telethon import Button, events
+from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
