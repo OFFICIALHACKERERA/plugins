@@ -10,7 +10,7 @@ Available Commands:
 
 
 import asyncio
-
+import random
 
 CmdHelp("fuck").add_command("fuck", None, "Sexy animation").add_command(
     "sux", None, "Sexy animation"
