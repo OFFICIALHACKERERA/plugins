@@ -1,8 +1,4 @@
-# Plugin by @Rishisuperyo
-# Animation by kiddo
-# kang =gey ,keep credits = cool coder 😶
-# usage .gim
-from userbot.utils import admin_cmd
+
 
 
 @borg.on(admin_cmd(pattern=r"gim", outgoing=True))
