@@ -37,18 +37,14 @@ async def _(event):
 
 
 
-LEGEND_IMG = os.environ.get(
-    "BOT_PING_PIC", "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
-)
-ms = 4
-ALIVE = Config.ALIVE_NAME
+
+"BOT_PING_PIC", "https://te.legra.ph/file/4f730af88f1d7ec343386.jp
 
 LegendBoy = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n   ⚜ {ms}\n   ⚜ ❝𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫❞ ~『{ALIVE}』"
-
 @tgbot.on(events.NewMessage(pattern="^/ping"))
 async def _(event):
     GOOD = [[Button.url("⚜ OFFICIAL HACKER ⚜", "https://t.me/OFFICIAL HACKER")]]
-    await tgbot.send_file(event.chat_id, LEGEND_IMG, caption=LegendBoy, buttons=GOOD)
+    await tgbot.send_file(event.chat_id, BOT_PING_PIC, caption=LegendBoy, buttons=GOOD)
 
 
 
