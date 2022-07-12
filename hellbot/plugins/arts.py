@@ -1,10 +1,5 @@
 import asyncio
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND User"
-
-USERID = bot.uid
-
-mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
 
 
 @bot.on(admin_cmd(pattern="car (.*)"))
