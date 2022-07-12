@@ -124,6 +124,5 @@ CmdHelp("sudo").add_command(
     "Manage Sudo."
 ).add_warning(
     "⚠️ Grant Sudo Access to someone you trust!"
-).add_type(
     "Official"
 ).add()
