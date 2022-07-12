@@ -1,76 +1,17 @@
+
 import os
 
+import heroku3
 from telethon.tl.functions.users import GetFullUserRequest
-
 from hellbot.sql.gvar_sql import addgvar, gvarstat, delgvar
 from . import *
 
 
-@hell_cmd(pattern="sudo$")
-async def sudo(event):
-    if Config.SUDO_USERS:
-        if gvarstat("SUDO_USERS"):
-            sudousers = gvarstat("SUDO_USERS")
-            await eor(event, f"📍 **Sudo :**  `Enabled`\n\n📝 **Sudo users :**  `{sudousers}`")
-    else:
-        await eod(event, f"📍 **Sudo :**  `Disabled`")
-
-
-@hell_cmd(pattern="addsudo(?:\s|$)([\s\S]*)")
-async def add(event):
-    suu = event.text[9:]
-    suu = suu.split(" ")[0]
-    if f"{hl}add " in event.text:
-        return
-    ok = await eor(event, "**🚀 Adding Sudo User...**")
-    rply = await event.get_reply_message()
-    if not suu and not rply:
-        return await eod(ok, "Either reply to a user or give user id to add them to your sudo users list.")
-    if suu:
-        if not suu.isnumeric():
-            return await eod(ok, "Give user id only.")
-    user = await get_user(event) if rply else suu
-    user = str(user)
-    if gvarstat("SUDO_USERS"):
-        exist = gvarstat("SUDO_USERS")
-        int_list = await make_int(exist)
-        if int(user) in int_list:
-            return await eod(ok, "User is already in sudo list")
-        final = f"{str(exist)} {str(user)}"
-    else:
-        final = user
-    addgvar("SUDO_USERS", final)
-    await eod(ok, f"**Successfully Added New Sudo User.** \n\n__Reload your bot to apply changes. Do__ `{hl}reload`")
-
-
-@hell_cmd(pattern="rmsudo(?:\s|$)([\s\S]*)")
-async def _(event):
-    suu = event.text[8:]
-    suu = suu.split(" ")[0]
-    ok = await eor(event, "**🚫 Removing Sudo User...**")
-    rply = await event.get_reply_message()
-    if not suu and not rply:
-        return await eod(ok, "Either reply to a user or give user id to remove them from your sudo users list.")
-    if suu:
-        if not suu.isnumeric():
-            return await eod(ok, "Give user id only.")
-    user = await get_user(event) if rply else suu
-    user = str(user)
-    
-    if gvarstat("SUDO_USERS"):
-        x = gvarstat("SUDO_USERS")
-        int_list = await make_int(x)
-        if int(user) in int_list:
-            int_list.remove(int(user))
-            str_list = [str(xyz) for xyz in int_list]
-            final = " ".join(str_list)
-            delgvar("SUDO_USERS")
-            addgvar("SUDO_USERS", final)
-            await eod(ok, f"❌** Removed**  `{str(user)}`  **from Sudo User.**\n\n__Reload your bot to apply changes. Do__ `{hl}reload`")
-        else:
-            return await eod(ok, "This user is not in your sudo users list.")
-    else:
-        await eod(ok, "**Sudo Is Disabled !!**")
+Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+heroku_api = "https://api.heroku.com"
+sudousers = os.environ.get("SUDO_USERS")
+LOP = Var.HEROKU_APP_NAME
+LEGEND = Var.HEROKU_API_KEY
 
 
 async def get_user(event):
@@ -88,14 +29,101 @@ async def get_user(event):
     return target
 
 
+@bot.on(admin_cmd(pattern="sudo"))
+async def sudo(event):
+    sudo = "True" if Config.SUDO_USERS else "False"
+    users = sudousers
+    if sudo == "True":
+        await eor(event, f"📍 **Sudo :**  `Enabled`\n\n📝 **Sudo users :**  `{users}`")
+    else:
+        await eod(event, f"📍 **Sudo :**  `Disabled`")
+
+
+@bot.on(admin_cmd(pattern="addsudo(?: |$)"))
+async def add(event):
+    ok = await eor(event, "**⌛ Adding Sudo Users...**")
+    bot = "SUDO_USERS"
+    if Config.HEROKU_APP_NAME is not None:
+        app = Heroku.app(Config.HEROKU_APP_NAME)
+    else:
+        await eod(ok, "**Please Set-Up**  `HEROKU_APP_NAME` **to add sudo users!!**")
+        return
+    heroku_Config = app.config()
+    if event is None:
+        return
+    try:
+        target = await get_user(event)
+    except Exception:
+        await eod(ok, f"Reply to a user to add them in sudo.")
+    if sudousers:
+        newsudo = f"{sudousers} {target}"
+    else:
+        newsudo = f"{target}"
+    await ok.edit(
+        f"✅** Added**  `{target}`  **in Sudo User.**\n\n Restarting Heroku. Wait A Minute."
+    )
+    heroku_Config[bot] = newsudo
+
+
+@bot.on(admin_cmd(pattern="rmsudo"))
+async def remove_sudo(event):
+    Heroku = heroku3.from_key(LEGEND)
+    app = Heroku.app(LOP)
+    heroku_var = app.config()
+    if not event.is_reply:
+        return await event.edit("ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴘʟᴇᴀsᴇ")
+    if event.is_reply:
+        id = (await event.get_reply_message()).sender_id
+        name = (await bot.get_entity(id)).first_name
+        op = re.search(str(id), str(sudousers))
+        if op:
+            i = ""
+            amazing = sudousers.split(" ")
+            amazing.remove(str(id))
+            i += str(amazing)
+            x = i.replace("[", "")
+            xx = x.replace("]", "")
+            xxx = xx.replace(",", "")
+            done = xxx.replace("'", "")
+            heroku_var["SUDO_USERS"] = done
+            await event.edit(
+                f"The **{name}** Has Been Removed Successfully(Please Wait I am Restarting)"
+            )
+        else:
+            await event.edit(f"The {name} Is Not in Sudo 😑😑")
+        if heroku_var["SUDO_USERS"] == None:
+            await event.edit(f"The Sudo List Is Empty😑😑")
+
+
+@bot.on(admin_cmd("listsudo"))
+async def sudolists(event):
+    op = await event.edit("Checking All Sudos")
+    Heroku = heroku3.from_key(LEGEND)
+    app = Heroku.app(LOP)
+    app.config()
+    if not sudousers:
+        return await event.edit("Sudo List Is Empty")
+    sudos = sudousers.split(" ")
+    sudoz = "**»Sudo List«**"
+    for sudo in sudos:
+        k = await bot.get_entity(int(sudo))
+        pro = f"\n[**Name:** {k.first_name} \n**Username:~** @{k.username or None}]\n"
+        sudoz += pro
+    await op.edit(sudoz)
+
+
 CmdHelp("sudo").add_command(
-  "sudo", None, "Check If Your Bot Has Sudo Enabled!!"
+    "sudo", None, "Check If Your Bot Has Sudo Enabled!!"
 ).add_command(
-  "addsudo", "<reply to user>", "Adds replied user to sudo list."
+    "addsudo", "<reply to user>", "Adds replied user to sudo list."
 ).add_command(
-  "rmsudo", "<reply to user>", "Removes the replied user from your sudo list if already added."
+    "rmsudo",
+    "<reply to user>",
+    "Removes the replied user from your sudo list if already added.",
 ).add_info(
-  "Manage Sudo."
+    "Manage Sudo."
 ).add_warning(
-  "⚠️ Grant Sudo Access to someone you trust!"
+    "⚠️ Grant Sudo Access to someone you trust!"
+).add_type(
+    "Official"
 ).add()
