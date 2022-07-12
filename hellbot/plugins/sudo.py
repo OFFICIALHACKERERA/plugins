@@ -120,9 +120,10 @@ CmdHelp("sudo").add_command(
     "rmsudo",
     "<reply to user>",
     "Removes the replied user from your sudo list if already added.",
-).add_info(
+).add_command(
     "Manage Sudo."
-).add_warning(
+).add_command(
     "⚠️ Grant Sudo Access to someone you trust!"
+).add_command(
     "Official"
 ).add()
