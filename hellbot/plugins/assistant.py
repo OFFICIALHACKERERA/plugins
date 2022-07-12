@@ -1,10 +1,13 @@
 import os
+import asyncio
 from telethon import Button, events
+from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
+from telethon.tl.types import ChannelParticipantsAdmins
 
 
 
 
-
+#....................................botalive
 PM_IMG = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
 pm_caption = f"⚜『Assistant』Is Ôñĺîne⚜ \n\n"
 pm_caption += f"**╭───────────**\n"
@@ -21,6 +24,7 @@ async def _(event):
     
 
 
+#...............................botping
 
 LEGEND_IMG = os.environ.get(
     "BOT_PING_PIC", "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
@@ -39,6 +43,7 @@ async def _(event):
 
 
 
+#...................................id
 
 @tgbot.on(events.NewMessage(pattern="^/id"))
 async def _(event):
@@ -67,23 +72,67 @@ async def _(event):
 
 
 
-tgbot.on(events.NewMessage(pattern="^/spam"))
-async def spammer(event):
-    lg_id = Config.LOGGER_ID
-    msg_ = event.text[6:]
-    counter = int(msg_.split(" ")[0])
-    spam_message = msg_.replace(str(counter), "")
-    reply_message = await event.get_reply_message()
-    if counter > 100:
-        return await eor(event, f"To spam more than 100 times use: \n`{hl}bigspam {counter} {spam_message}`")
-    hell = await eor(event, f"Spamming {counter} times...")
-    for i in range(counter):
-        await event.client.send_message(event.chat_id, spam_message, reply_to=reply_message)
-    await hell.delete()
-    await event.client.send_message(lg_id, f"#SPAM \n\nSpammed  `{counter}`  messages!!")
 
 
+#...........................purge
+
+@tgbot.on(events.NewMessage(pattern="^/purge"))
+async def purge(event):
+    chat = event.chat_id
+    msgs = []
+
+    if not await is_administrator(user_id=event.sender_id, message=event):
+        await event.reply("You're not an admin!")
+        return
+
+    msg = await event.get_reply_message()
+    if not msg:
+        await event.reply("Reply to a message to select where to start purging from.")
+        return
+
+    try:
+        msg_id = msg.id
+        count = 0
+        to_delete = event.message.id - 1
+        await tgbot.delete_messages(chat, event.message.id)
+        msgs.append(event.reply_to_msg_id)
+        for m_id in range(to_delete, msg_id - 1, -1):
+            msgs.append(m_id)
+            count += 1
+            if len(msgs) == 100:
+                await tgbot.delete_messages(chat, msgs)
+                msgs = []
+
+        await tgbot.delete_messages(chat, msgs)
+        del_res = await tgbot.send_message(
+            event.chat_id, f"Fast Purged {count} messages."
+        )
+
+        await asyncio.sleep(4)
+        await del_res.delete()
+
+    except MessageDeleteForbiddenError:
+        text = "Failed to delete messages.\n"
+        text += "Messages maybe too old or I'm not admin! or dont have delete rights!"
+        del_res = await respond(text, parse_mode="md")
+        await asyncio.sleep(5)
+        await del_res.delete()
 
 
+@tgbot.on(events.NewMessage(pattern="^/del$"))
+async def delete_msg(event):
 
+    if not await is_administrator(user_id=event.sender_id, message=event):
+        await event.reply("You're not an admin!")
+        return
+
+    chat = event.chat_id
+    msg = await event.get_reply_message()
+    if not msg:
+        await event.reply("Reply to some message to delete it.")
+        return
+    to_delete = event.message
+    chat = await event.get_input_chat()
+    rm = [msg, to_delete]
+    await tgbot.delete_messages(chat, rm)
 
