@@ -23,7 +23,7 @@ async def _(event):
 
 
 LEGEND_IMG = os.environ.get(
-    "BOT_PING_PIC", "https://telegra.ph/file/a9f6a3c160977352dd595.jpg"
+    "BOT_PING_PIC", "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
 )
 ms = 4
 ALIVE = Config.ALIVE_NAME
