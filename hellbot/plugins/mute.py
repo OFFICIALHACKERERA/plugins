@@ -89,7 +89,7 @@ async def startmute(event):
         except Exception as e:
             await edit_or_reply(event, "Error occured!\nError is " + str(e))
         else:
-            await edit_or_reply(event, "Chup Hi Raho \n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
+            await edit_or_reply(event, "CHUP HI RHE 😏 \n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
 
 
 @bot.on(admin_cmd(pattern="unmute ?(\d+)?", outgoing=True))
@@ -162,7 +162,7 @@ async def endmute(event):
             await edit_or_reply(event, "Error occured!\nError is " + str(e))
         else:
             await edit_or_reply(
-                event, "Haa Abb Boll Bhai unmute successfully \n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍"
+                event, "HAA ABB BOLL  unmute successfully \n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍"
             )
 
 
