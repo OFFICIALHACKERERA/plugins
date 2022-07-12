@@ -1,21 +1,7 @@
-from telethon import events
-from userbot import *
-from . import *
-from telethon.tl.functions.users import GetFullUserRequest
-import asyncio
-from telethon import events
-from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
-from telethon.tl.types import ChannelParticipantsAdmins
-from userbot import bot
-from telethon.errors import BadRequestError
-from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
-from telethon.tl.functions.messages import UpdatePinnedMessageRequest
-from telethon.tl.types import (
-    ChannelParticipantsAdmins,
-    ChatAdminRights,
-    ChatBannedRights,
-    MessageEntityMentionName,
-)
+import os
+from telethon import Button, events
+
+
 
 
 
@@ -54,5 +40,29 @@ async def _(event):
 
 
 
+@tgbot.on(events.NewMessage(pattern="^/id"))
+async def _(event):
+    if event.reply_to_msg_id:
+        await event.get_input_chat()
+        r_msg = await event.get_reply_message()
+        if r_msg.media:
+            bot_api_file_id = pack_bot_file_id(r_msg.media)
+            await tgbot.send_message(
+                event.chat_id,
+                "Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(
+                    str(event.chat_id), str(r_msg.sender_id), bot_api_file_id
+                ),
+            )
+        else:
+            await tgbot.send_message(
+                event.chat_id,
+                "Current Chat ID: `{}`\nFrom User ID: `{}`".format(
+                    str(event.chat_id), str(r_msg.sender_id)
+                ),
+            )
+    else:
+        await tgbot.send_message(
+            event.chat_id, "Current Chat ID: `{}`".format(str(event.chat_id))
+        )
 
 
