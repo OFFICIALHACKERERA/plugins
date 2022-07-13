@@ -42,7 +42,7 @@ HELP_IMG = os.environ.get(
 ms = 4
 
 
-OFFICIALHACKER = f"""The commands in the bot are:
+OFFICIALHACKERR = f"""The commands in the bot are:
 **Note : **__This commands work only in this bot
 • **Cmd : **/uinfo <reply to user message>
 • **Info : **__You have noticed that forwarded stickers/emoji doesn't have forward tag so you can identify the user who sent thoose messages by this cmd.__
@@ -62,7 +62,7 @@ OFFICIALHACKER = f"""The commands in the bot are:
 
 @tgbot.on(events.NewMessage(pattern="^/help"))
 async def _(event):
-    GOOD = [[Button.url(" Owner ", "https://t.me/OFFICIALHACKERERA")]]
-    await tgbot.send_file(event.chat_id, HELP_IMG, caption=OFFICIALHACKER, buttons=GOOD)
+    GOOOD = [[Button.url(" Owner ", "https://t.me/OFFICIALHACKERERA")]]
+    await tgbot.send_file(event.chat_id, HELP_IMG, caption=OFFICIALHACKERR, buttons=GOOOD)
 
 
