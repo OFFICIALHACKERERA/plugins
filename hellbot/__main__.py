@@ -42,20 +42,23 @@ async def plug_load(path):
             path1 = Path(hell.name)
             shortname = path1.stem
             if shortname.replace(".py", "") in Config.UNLOAD:
-                os.remove(Path(f"hellbot/plugins/assistant/{shortname}.py"))
-            else:
-                load_module(shortname.replace(".py", ""))      
-
-async def plug_load(path):
-    files = glob.glob(path)
-    for name in files:
-        with open(name) as hell:
-            path1 = Path(hell.name)
-            shortname = path1.stem
-            if shortname.replace(".py", "") in Config.UNLOAD:
                 os.remove(Path(f"hellbot/plugins/{shortname}.py"))
             else:
                 load_module(shortname.replace(".py", ""))      
+      
+
+
+# Assistant.....
+assistant = os.environ.get("ASSISTANT", None)
+async def assistants():
+    if assistant == "ON":
+        path = "hellbot/plugins/assistant/{shortname}.py"
+        files = glob.glob(path)
+        for name in files:
+            with open(name) as f:
+                path1 = Path(f.name)
+                shortname = path1.stem
+                start_assistant(shortname.replace(".py", ""))
 
 # Final checks after startup
 async def hell_is_on(total):
