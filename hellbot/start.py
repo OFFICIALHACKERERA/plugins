@@ -4,8 +4,6 @@ from pathlib import Path
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import InputMessagesFilterDocument
 
-from userbot import LEGENDversion, bot
-from userbot.Config import Config
 from userbot.utils import (
     load_abuse,
     load_addons,
