@@ -39,6 +39,56 @@ def load_module(shortname):
     elif shortname.endswith("_"):
         import hellbot.utils
 
+        path = Path(f"hellbot/plugins/{shortname}.py")
+        name = "userbot.plugins.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        LOGS.info("Lêɠêɳ̃dẞø† ~ " + shortname)
+    else:
+        import hellbot.utils
+
+        path = Path(f"userbot/plugins/{shortname}.py")
+        name = "userbot.plugins.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        mod.bot = Legend
+        mod.borg = bot
+        # mod.LEGENDBOT = Legend
+        mod.LegendBot = LegendBot
+        mod.tbot = LegendBot
+        mod.Legend = Legend
+        mod.tgbot = bot.tgbot
+        mod.Var = Var
+        mod.command = command
+        mod.logger = logging.getLogger(shortname)
+        # support for uniborg
+        sys.modules["uniborg.util"] = userbot.utils
+        mod.Config = Config
+        mod.edit_or_reply = edit_or_reply
+        mod.delete_LEGEND = delete_LEGEND
+        mod.eod = delete_LEGEND
+        mod.admin_cmd = admin_cmd
+        mod.legend_cmd = admin_cmd
+        mod.sudo_cmd = sudo_cmd
+        # support for LEGENDBOT originals
+        sys.modules["LEGENDBOT.utils"] = userbot.utils
+        sys.modules["LEGENDBOT"] = userbot
+        # support for paperplaneextended
+        sys.modules["userbot.events"] = userbot.utils
+        spec.loader.exec_module(mod)
+        # for imports
+        sys.modules["hellbot.plugins." + shortname] = mod
+        LOGS.info("🔥⚡Lêɠêɳ̃dẞø†⚡🔥 ~ " + shortname)
+
+
+
+def load_module(shortname):
+    if shortname.startswith("__"):
+        pass
+    elif shortname.endswith("_"):
+        import hellbot.utils
+
         path = Path(f"hellbot/plugins/assistant/{shortname}.py")
         name = "hellbot.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
