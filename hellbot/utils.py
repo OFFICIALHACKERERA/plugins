@@ -45,7 +45,7 @@ def load_module(shortname):
     else:
         import userbot.utils
 
-        path = Path(f"userbot/plugins/{shortname}.py")
+        path = Path(f"hellbot/plugins/{shortname}.py")
         name = "userbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
@@ -75,7 +75,7 @@ def load_module(shortname):
         sys.modules["userbot.events"] = userbot.utils
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["userbot.plugins." + shortname] = mod
+        sys.modules["hellbot.plugins." + shortname] = mod
         LOGS.info("🔥⚡Lêɠêɳ̃dẞø†⚡🔥 ~ " + shortname)
 
 
@@ -91,7 +91,7 @@ def start_assistant(shortname):
         print("Starting Your Assistant Bot.")
         print("Assistant Sucessfully imported " + shortname)
     else:
-        path = Path(f"userbot/plugins/assistant/{shortname}.py")
+        path = Path(f"hellbot/plugins/assistant/{shortname}.py")
         name = "userbot.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
