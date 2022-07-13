@@ -34,7 +34,7 @@ async def _(event):
 
 
 
-@assistant.bot_cmd(pattern="^/help$", from_users=Config.OWNER_ID)
+@official.bot_cmd(pattern="^/help$", from_users=Config.OWNER_ID)
 async def bot_help(event):
     await event.reply(
         f"""The commands in the bot are:
