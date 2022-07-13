@@ -70,8 +70,8 @@ async def start_msg(client, pic, version, total):
         parse_mode="HTML",
         buttons=[
 [
-Button.url("Channel", "https://t.me/Broken_Heart_72")
-Button.url("Support", "https://t.me/HEPPYLIFI")
+Button.url("Channel", "https://t.me/Broken_Heart_72"),
+Button.url("Support", "https://t.me/HEPPYLIFI"),
 ]
 ],
     )
