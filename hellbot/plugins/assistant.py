@@ -12,8 +12,6 @@ pm_caption += f"┣Assistant ~  [『LegendBoy』 ](https://t.me/LegendBoy_XD)\n"
 pm_caption += f"╰────────────\n"
 pm_caption += f"       »»» [『LegendBot』](https://t.me/LegendBot_OP) «««"
 
-from telethon import events
-
 
 @tgbot.on(events.NewMessage(pattern="^/alive"))
 async def _(event):
