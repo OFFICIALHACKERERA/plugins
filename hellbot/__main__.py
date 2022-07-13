@@ -48,17 +48,7 @@ async def plug_load(path):
       
 
 
-# Assistant.....
-assistant = os.environ.get("ASSISTANT", None)
-async def assistants():
-    if assistant == "ON":
-        path = "hellbot/plugins/assistant/{shortname}.py"
-        files = glob.glob(path)
-        for name in files:
-            with open(name) as f:
-                path1 = Path(f.name)
-                shortname = path1.stem
-                start_assistant(shortname.replace(".py", ""))
+
 
 # Final checks after startup
 async def hell_is_on(total):
