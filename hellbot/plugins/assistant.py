@@ -34,7 +34,7 @@ async def _(event):
 
 
 
-@CmdHelp(pattern="^/help$",)
+@legend.bot_cmd(pattern="^/help$",
 async def bot_help(event):
     await event.reply(
         f"""The commands in the bot are:
@@ -53,8 +53,6 @@ async def bot_help(event):
 • **Note : **__if user stoped/blocked the bot then he will be removed from your database that is he will erased from the bot_starters list.__
 """
     )
-
-
 
 
 
