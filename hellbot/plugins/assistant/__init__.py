@@ -1,7 +1,6 @@
 # LEGENDBOT Assistant
 from telethon import Button, custom
 
-from userbot import ALIVE_NAME, bot
 
 from . import *
 
