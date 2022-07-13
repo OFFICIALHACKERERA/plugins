@@ -80,7 +80,7 @@ async def start_hellbot():
         LOGS.info("••• Starting to load Plugins •••")
         await plug_load("hellbot/plugins/*.py")
         await plug_channel(bot, Config.PLUGIN_CHANNEL)
-        LOGS.info("⚡ Your HellBot Is Now Working ⚡")
+        LOGS.info("⚡ Your UserBot.. Is Now Working ⚡")
         LOGS.info("Head to @Its_HellBot for Updates. Also join chat group to get help regarding to HellBot.")
         LOGS.info(f"» Total Clients = {str(total)} «")
         await hell_is_on(total)
