@@ -33,7 +33,6 @@ else:
 
 
 # load plugins
-
 def load_module(shortname):
     if shortname.startswith("__"):
         pass
@@ -45,7 +44,7 @@ def load_module(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        LOGS.info("Lêɠêɳ̃dẞø† ~ " + shortname)
+        LOGS.info("HellBot - Successfully imported " + shortname)
     else:
         import hellbot.utils
 
@@ -53,34 +52,43 @@ def load_module(shortname):
         name = "hellbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.bot = hellbot
-        mod.borg = bot
-        # mod.hellbotBOT = hellbot
-        mod.hellbotBot = hellbotBot
-        mod.tbot = hellbotBot
-        mod.hellbot = hellbot
+        mod.bot = Hell
+        mod.H1 = Hell
+        mod.H2 = H2
+        mod.H3 = H3
+        mod.H4 = H4
+        mod.H5 = H5
+        mod.Hell = Hell
+        mod.HellBot = HellBot
+        mod.tbot = HellBot
         mod.tgbot = bot.tgbot
-        mod.Var = Var
         mod.command = command
+        mod.CmdHelp = CmdHelp
+        mod.client_id = client_id
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
         sys.modules["uniborg.util"] = hellbot.utils
         mod.Config = Config
+        mod.borg = bot
+        mod.hellbot = bot
         mod.edit_or_reply = edit_or_reply
-        mod.delete_hellbot = delete_hellbot
-        mod.eod = delete_hellbot
+        mod.eor = edit_or_reply
+        mod.delete_hell = delete_hell
+        mod.eod = delete_hell
+        mod.Var = Config
         mod.admin_cmd = admin_cmd
-        mod.hellbot_cmd = admin_cmd
+        mod.hell_cmd = hell_cmd
         mod.sudo_cmd = sudo_cmd
-        # support for hellbotBOT originals
-        sys.modules["hellbotBOT.utils"] = hellbot.utils
-        sys.modules["hellbotBOT"] = hellbot
+        # support for other userbots
+        sys.modules["userbot.utils"] = hellbot.utils
+        sys.modules["userbot"] = hellbot
         # support for paperplaneextended
-        sys.modules["hellbot.events"] = hellbot.utils
+        sys.modules["userbot.events"] = hellbot
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["hellbot.plugins." + shortname] = mod
-        LOGS.info("🔥⚡Lêɠêɳ̃dẞø†⚡🔥 ~ " + shortname)
+        LOGS.info("⚡ Hêllẞø† ⚡ - Successfully Imported " + shortname)
+
 
 
 def start_assistant(shortname):
@@ -103,9 +111,8 @@ def start_assistant(shortname):
         spec.loader.exec_module(mod)
         sys.modules["hellbot.plugins.assistant" + shortname] = mod
         print("[🤴Assistant🤴 3.0] ~ HAS ~ 💞Installed💞 ~" + shortname)
-
-
-
+        
+        
 # remove plugins
 def remove_plugin(shortname):
     try:
@@ -115,7 +122,7 @@ def remove_plugin(shortname):
             del LOAD_PLUG[shortname]
 
         except BaseException:
-            name = f"hellbot.plugins{shortname}"
+            name = f"hellbot.plugins.{shortname}"
 
             for i in reversed(range(len(bot._event_builders))):
                 ev, cb = bot._event_builders[i]
@@ -127,8 +134,8 @@ def remove_plugin(shortname):
 
 async def plug_channel(client, channel):
     if channel:
-        LOGS.info(" 💞Installed💞  - PLUGIN CHANNEL DETECTED.")
-        LOGS.info(" 💞Installed💞  - Starting to load extra plugins.")
+        LOGS.info("⚡ Hêllẞø† ⚡ - PLUGIN CHANNEL DETECTED.")
+        LOGS.info("⚡ Hêllẞø† ⚡ - Starting to load extra plugins.")
         plugs = await client.get_messages(channel, None, filter=InputMessagesFilterDocument)
         total = int(plugs.total)
         for plugins in range(total):
