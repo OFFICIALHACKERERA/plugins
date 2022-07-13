@@ -53,12 +53,12 @@ def load_module(shortname):
         name = "hellbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.bot = Legend
+        mod.bot = hellbot
         mod.borg = bot
-        # mod.LEGENDBOT = Legend
-        mod.LegendBot = LegendBot
-        mod.tbot = LegendBot
-        mod.Legend = Legend
+        # mod.hellbotBOT = hellbot
+        mod.hellbotBot = hellbotBot
+        mod.tbot = hellbotBot
+        mod.hellbot = hellbot
         mod.tgbot = bot.tgbot
         mod.Var = Var
         mod.command = command
@@ -67,14 +67,14 @@ def load_module(shortname):
         sys.modules["uniborg.util"] = hellbot.utils
         mod.Config = Config
         mod.edit_or_reply = edit_or_reply
-        mod.delete_LEGEND = delete_LEGEND
-        mod.eod = delete_LEGEND
+        mod.delete_hellbot = delete_hellbot
+        mod.eod = delete_hellbot
         mod.admin_cmd = admin_cmd
-        mod.legend_cmd = admin_cmd
+        mod.hellbot_cmd = admin_cmd
         mod.sudo_cmd = sudo_cmd
-        # support for LEGENDBOT originals
-        sys.modules["LEGENDBOT.utils"] = hellbot.utils
-        sys.modules["LEGENDBOT"] = hellbot
+        # support for hellbotBOT originals
+        sys.modules["hellbotBOT.utils"] = hellbot.utils
+        sys.modules["hellbotBOT"] = hellbot
         # support for paperplaneextended
         sys.modules["hellbot.events"] = hellbot.utils
         spec.loader.exec_module(mod)
@@ -148,4 +148,4 @@ async def plug_channel(client, channel):
                 LOGS.error(str(e))
 
 
-# OFFICIALHACKERERA
+# hellbot
