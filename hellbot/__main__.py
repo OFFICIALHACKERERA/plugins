@@ -12,7 +12,7 @@ from hellbot.clients.session import Hell, H2, H3, H4, H5
 from hellbot.config import Config
 from hellbot.utils import join_it, load_module, logger_check, start_msg, update_sudo, plug_channel
 from hellbot.version import __hell__ as hellver
-
+from hellbot.start import abuses, addons, assistants, hekp, install, module, spams
 
 hl = Config.HANDLER
 
