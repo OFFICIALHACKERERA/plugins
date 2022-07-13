@@ -1,15 +1,10 @@
-# LEGENDBOT Assistant
+
 from telethon import Button, custom
 
 
 from . import *
 
-OWNER_NAME = ALIVE_NAME
-OWNER_ID = bot.uid
 
-
-LEGEND_USER = bot.me.first_name
-Its_LegendBoy = bot.uid
 
 legend_mention = f"[{LEGEND_USER}](tg://user?id={Its_LegendBoy})"
 gban_pic = "./userbot/resources/pics/gban.mp4"
