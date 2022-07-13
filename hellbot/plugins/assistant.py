@@ -1,16 +1,14 @@
 from telethon import events
 
 PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
-pm_caption = f"⚜ Assistant is Online ⚜ \n\n"
+pm_caption = f"❤️‍🔥Assistant is Online❤️‍🔥\n\n"
 pm_caption += f"**╭───────────**\n"
-pm_caption += f"┣Telethon ~ `1.15.0` \n"
-pm_caption += f"┣『LegendBot』~ `2.0` \n"
-pm_caption += f"┣Channel ~ [Channel](https://t.me/LegendBot_AI)\n"
-pm_caption += f"┣**Licenece** ~ [Licence](https://github.com/ITS-LEGENDBOT/LEGENDBOT/blob/master/LICENSE)\n"
-pm_caption += f"┣Copyright ~ By [LegendBot』 ](https://t.me/LegendBot_OP)\n"
-pm_caption += f"┣Assistant ~  [『LegendBoy』 ](https://t.me/LegendBoy_XD)\n"
+pm_caption += f"┣❤️‍🔥 Telethon : `1.15.0` \n"
+pm_caption += f"┣❤️‍🔥 Version  : `2.0` \n"
+pm_caption += f"┣❤️‍🔥 Channel  : [ᴄʜᴀɴɴᴇʟ](https://t.me/Broken_Heart_72)\n"
+pm_caption += f"┣❤️‍🔥 Support  : [sᴜᴘᴘᴏʀᴛ](https://t.me/HEPPYLIFI)\n"
+pm_caption += f"┣❤️‍🔥 Owner    : [ᴏғғɪᴄɪᴀʟ ʜᴀᴄᴋᴇʀ](https://t.me/OFFICIALHACKERERA)\n"
 pm_caption += f"╰────────────\n"
-pm_caption += f"       »»» [『LegendBot』](https://t.me/LegendBot_OP) «««"
 
 
 @tgbot.on(events.NewMessage(pattern="^/alive"))
