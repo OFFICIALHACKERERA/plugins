@@ -5,11 +5,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import InputMessagesFilterDocument
 
 from hellbot.utils import (
-    load_abuse,
-    load_addons,
-    load_module,
     start_assistant,
-    start_spam,
 )
 
 os.system("pip install telethon==1.24.0")
