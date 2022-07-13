@@ -87,7 +87,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["hellbot.plugins." + shortname] = mod
-        LOGS.info("[plugins 1.3] ~ HAS ~ 💞Installed💞 ~ + shortname)
+        LOGS.info(" Plugins ~ HAS ~ 💞  Installed 💞 ~ + shortname)
 
 
 
