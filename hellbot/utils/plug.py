@@ -33,6 +33,7 @@ else:
 
 
 # load plugins
+
 def load_module(shortname):
     if shortname.startswith("__"):
         pass
@@ -63,7 +64,7 @@ def load_module(shortname):
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
-        sys.modules["uniborg.util"] = userbot.utils
+        sys.modules["uniborg.util"] = hellbot.utils
         mod.Config = Config
         mod.edit_or_reply = edit_or_reply
         mod.delete_LEGEND = delete_LEGEND
@@ -72,71 +73,37 @@ def load_module(shortname):
         mod.legend_cmd = admin_cmd
         mod.sudo_cmd = sudo_cmd
         # support for LEGENDBOT originals
-        sys.modules["LEGENDBOT.utils"] = userbot.utils
-        sys.modules["LEGENDBOT"] = userbot
+        sys.modules["LEGENDBOT.utils"] = hellbot.utils
+        sys.modules["LEGENDBOT"] = hellbot
         # support for paperplaneextended
-        sys.modules["userbot.events"] = userbot.utils
+        sys.modules["hellbot.events"] = hellbot.utils
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["hellbot.plugins." + shortname] = mod
         LOGS.info("🔥⚡Lêɠêɳ̃dẞø†⚡🔥 ~ " + shortname)
 
 
-
-def load_module(shortname):
+def start_assistant(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        import hellbot.utils
-
         path = Path(f"hellbot/plugins/assistant/{shortname}.py")
         name = "hellbot.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        LOGS.info("HellBot - Successfully imported " + shortname)
+        print("Starting Your Assistant Bot.")
+        print("Assistant Sucessfully imported " + shortname)
     else:
-        import hellbot.utils
         path = Path(f"hellbot/plugins/assistant/{shortname}.py")
         name = "hellbot.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.bot = Hell
-        mod.H1 = Hell
-        mod.H2 = H2
-        mod.H3 = H3
-        mod.H4 = H4
-        mod.H5 = H5
-        mod.Hell = Hell
-        mod.HellBot = HellBot
-        mod.tbot = HellBot
         mod.tgbot = bot.tgbot
-        mod.command = command
-        mod.CmdHelp = CmdHelp
-        mod.client_id = client_id
-        mod.logger = logging.getLogger(shortname)
-        # support for uniborg
-        sys.modules["uniborg.util"] = hellbot.utils
-        mod.Config = Config
-        mod.borg = bot
-        mod.hellbot = bot
-        mod.edit_or_reply = edit_or_reply
-        mod.eor = edit_or_reply
-        mod.delete_hell = delete_hell
-        mod.eod = delete_hell
-        mod.Var = Config
-        mod.admin_cmd = admin_cmd
-        mod.hell_cmd = hell_cmd
-        mod.sudo_cmd = sudo_cmd
-        # support for other userbots
-        sys.modules["userbot.utils"] = hellbot.utils
-        sys.modules["userbot"] = hellbot
-        # support for paperplaneextended
-        sys.modules["userbot.events"] = hellbot
         spec.loader.exec_module(mod)
-        # for imports
-        sys.modules["hellbot.plugins.assistant." + shortname] = mod
-        LOGS.info("[🤴Assistant🤴 3.0] ~ HAS ~ 💞Installed💞 ~ " + shortname)
+        sys.modules["hellbot.plugins.assistant" + shortname] = mod
+        print("[🤴Assistant🤴 3.0] ~ HAS ~ 💞Installed💞 ~" + shortname)
+
 
 
 # remove plugins
@@ -181,4 +148,4 @@ async def plug_channel(client, channel):
                 LOGS.error(str(e))
 
 
-# hellbot
+# OFFICIALHACKERERA
