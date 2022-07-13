@@ -39,7 +39,7 @@ def load_module(shortname):
     elif shortname.endswith("_"):
         import hellbot.utils
 
-        path = Path(f"hellbot/plugins/{shortname}.py")
+        path = Path(f"hellbot/plugins/assistant/{shortname}.py")
         name = "hellbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
@@ -47,8 +47,7 @@ def load_module(shortname):
         LOGS.info("HellBot - Successfully imported " + shortname)
     else:
         import hellbot.utils
-
-        path = Path(f"hellbot/plugins/{shortname}.py")
+        path = Path(f"hellbot/plugins/assistant/{shortname}.py")
         name = "hellbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
@@ -86,8 +85,8 @@ def load_module(shortname):
         sys.modules["userbot.events"] = hellbot
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["hellbot.plugins." + shortname] = mod
-        LOGS.info("⚡ Hêllẞø† ⚡ - Successfully Imported " + shortname)
+        sys.modules["hellbot.plugins.assistant." + shortname] = mod
+        LOGS.info("[🤴Assistant🤴 3.0] ~ HAS ~ 💞Installed💞 ~ " + shortname)
 
 
 # remove plugins
@@ -99,7 +98,7 @@ def remove_plugin(shortname):
             del LOAD_PLUG[shortname]
 
         except BaseException:
-            name = f"hellbot.plugins.{shortname}"
+            name = f"hellbot.plugins.assistant.{shortname}"
 
             for i in reversed(range(len(bot._event_builders))):
                 ev, cb = bot._event_builders[i]
@@ -111,8 +110,8 @@ def remove_plugin(shortname):
 
 async def plug_channel(client, channel):
     if channel:
-        LOGS.info("⚡ Hêllẞø† ⚡ - PLUGIN CHANNEL DETECTED.")
-        LOGS.info("⚡ Hêllẞø† ⚡ - Starting to load extra plugins.")
+        LOGS.info(" 💞Installed💞  - PLUGIN CHANNEL DETECTED.")
+        LOGS.info(" 💞Installed💞  - Starting to load extra plugins.")
         plugs = await client.get_messages(channel, None, filter=InputMessagesFilterDocument)
         total = int(plugs.total)
         for plugins in range(total):
