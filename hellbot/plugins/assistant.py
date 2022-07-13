@@ -34,7 +34,7 @@ async def _(event):
 
 
 
-@legend.bot_cmd(pattern="^/help$",
+@legend.bot_cmd(pattern="^/help$"))
 async def bot_help(event):
     await event.reply(
         f"""The commands in the bot are:
