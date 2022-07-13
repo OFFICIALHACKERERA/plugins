@@ -42,7 +42,7 @@ async def plug_load(path):
             path1 = Path(hell.name)
             shortname = path1.stem
             if shortname.replace(".py", "") in Config.UNLOAD:
-                os.remove(Path(f"hellbot/plugins/{shortname}.py"))
+                os.remove(Path(f"hellbot/plugins/assistant/{shortname}.py"))
             else:
                 load_module(shortname.replace(".py", ""))      
 
