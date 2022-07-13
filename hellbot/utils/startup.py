@@ -57,20 +57,23 @@ async def logger_check(bot):
 async def start_msg(client, pic, version, total):
     is_sudo = "True" if Config.SUDO_USERS else "False"
     text = f"""
-#START
 
 <b><i>Version :</b></i> <code>{version}</code>
 <b><i>Clients :</b></i> <code>{str(total)}</code>
 <b><i>Sudo :</b></i> <code>{is_sudo}</code>
 
-<b><i>»» <u><a href='https://t.me/Its_HellBot'>†hê Hêllẞø†</a></u> ««</i></b>
 """
     await client.send_file(
         Config.LOGGER_ID,
         pic,
         caption=text,
         parse_mode="HTML",
-        buttons=[[Button.url("HellBot Network", "https://t.me/HellBot_Network")]],
+        buttons=[
+[
+Button.url("Channel", "https://t.me/Broken_Heart_72")
+Button.url("Support", "https://t.me/HEPPYLIFI")
+]
+],
     )
 
 
@@ -78,7 +81,7 @@ async def start_msg(client, pic, version, total):
 async def join_it(client):
     if client:
         try:
-            await client(functions.channels.JoinChannelRequest("@Its_HellBot"))
+            await client(functions.channels.JoinChannelRequest("@Broken_Heart_72"))
             await client(functions.messages.ImportChatInviteRequest('bZxlmdNFp1NjMDNh'))
         except BaseException:
             pass
