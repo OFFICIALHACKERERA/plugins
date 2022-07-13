@@ -57,7 +57,7 @@ OFFICIALHACKER = f"""The commands in the bot are:
 • **Info : **__Reply to a message to get broadcasted to every user who started your bot. To get list of users use__ `{cmhd}bot_users`.
 • **Note : **__if user stoped/blocked the bot then he will be removed from your database that is he will erased from the bot_starters list.__
 """
-)
+
 
 
 @tgbot.on(events.NewMessage(pattern="^/help"))
