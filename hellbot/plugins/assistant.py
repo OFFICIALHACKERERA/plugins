@@ -18,16 +18,25 @@ async def _(event):
     await tgbot.send_file(event.chat_id, PM_IMG, caption=pm_caption)
 
 
-LEGEND_IMG = os.environ.get(
+PING_IMG = os.environ.get(
     "BOT_PING_PIC", "https://te.legra.ph/file/fa15573431b4d91a002c7.jpg"
 )
 ms = 4
 
 
-LegendBoy = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n   ⚜ {ms}\n   ⚜ ❝𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫❞ ~『soon』"
+OFFICIALHACKER = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n    {ms}\n    ❝𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫❞ ~『soon』"
 
 
 @tgbot.on(events.NewMessage(pattern="^/ping"))
 async def _(event):
-    GOOD = [[Button.url("⚜ Owner ⚜", "https://t.me/OFFICIALHACKERERA")]]
-    await tgbot.send_file(event.chat_id, LEGEND_IMG, caption=LegendBoy, buttons=GOOD)
+    GOOD = [[Button.url(" Owner ", "https://t.me/OFFICIALHACKERERA")]]
+    await tgbot.send_file(event.chat_id, PING_IMG, caption=OFFICIALHACKER, buttons=GOOD)
+
+
+
+
+
+
+
+
+
