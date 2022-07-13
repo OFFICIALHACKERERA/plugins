@@ -40,7 +40,7 @@ def load_module(shortname):
         import hellbot.utils
 
         path = Path(f"hellbot/plugins/{shortname}.py")
-        name = "userbot.plugins.{}".format(shortname)
+        name = "hellbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
@@ -48,8 +48,8 @@ def load_module(shortname):
     else:
         import hellbot.utils
 
-        path = Path(f"userbot/plugins/{shortname}.py")
-        name = "userbot.plugins.{}".format(shortname)
+        path = Path(f"hellbot/plugins/{shortname}.py")
+        name = "hellbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.bot = Legend
@@ -148,7 +148,7 @@ def remove_plugin(shortname):
             del LOAD_PLUG[shortname]
 
         except BaseException:
-            name = f"hellbot.plugins.assistant.{shortname}"
+            name = f"hellbot.plugins{shortname}"
 
             for i in reversed(range(len(bot._event_builders))):
                 ev, cb = bot._event_builders[i]
