@@ -46,6 +46,16 @@ async def plug_load(path):
             else:
                 load_module(shortname.replace(".py", ""))      
 
+async def plug_load(path):
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as hell:
+            path1 = Path(hell.name)
+            shortname = path1.stem
+            if shortname.replace(".py", "") in Config.UNLOAD:
+                os.remove(Path(f"hellbot/plugins/{shortname}.py"))
+            else:
+                load_module(shortname.replace(".py", ""))      
 
 # Final checks after startup
 async def hell_is_on(total):
@@ -65,7 +75,7 @@ async def start_hellbot():
         tbot_id = await tbot.get_me()
         Config.BOT_USERNAME = f"@{tbot_id.username}"
         bot.tgbot = tbot
-        LOGS.info("••• Starting HellBot •••")
+        LOGS.info("♥️ Starting UserBot.. ♥")
         C1 = await hells(Config.HELLBOT_SESSION, bot, "HELLBOT_SESSION")
         C2 = await hells(Config.SESSION_2, H2, "SESSION_2")
         C3 = await hells(Config.SESSION_3, H3, "SESSION_3")
@@ -75,7 +85,8 @@ async def start_hellbot():
         total = C1 + C2 + C3 + C4 + C5
         LOGS.info("••• HellBot Startup Completed •••")
         LOGS.info("••• Starting to load Plugins •••")
-        await plug_load("hellbot/plugins/assistant/./*.py")
+        await plug_load("hellbot/plugins/assistant/*.py")
+        await plug_load("hellbot/plugins/*.py")
         await plug_channel(bot, Config.PLUGIN_CHANNEL)
         LOGS.info("⚡ Your HellBot Is Now Working ⚡")
         LOGS.info("Head to @Its_HellBot for Updates. Also join chat group to get help regarding to HellBot.")
