@@ -1,4 +1,6 @@
+import os
 from telethon import events
+from telethon import Button, events
 
 PM_IMG = "https://te.legra.ph/file/fa15573431b4d91a002c7.jpg"
 pm_caption = f"Assistant is Online \n\n"
@@ -14,3 +16,18 @@ pm_caption += f"╰────────────\n"
 @tgbot.on(events.NewMessage(pattern="^/alive"))
 async def _(event):
     await tgbot.send_file(event.chat_id, PM_IMG, caption=pm_caption)
+
+
+LEGEND_IMG = os.environ.get(
+    "BOT_PING_PIC", "https://te.legra.ph/file/fa15573431b4d91a002c7.jpg"
+)
+ms = 4
+
+
+LegendBoy = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n   ⚜ {ms}\n   ⚜ ❝𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫❞ ~『{ALIVE}』"
+
+
+@tgbot.on(events.NewMessage(pattern="^/ping"))
+async def _(event):
+    GOOD = [[Button.url("⚜ Owner ⚜", "https://t.me/OFFICIALHACKERERA")]]
+    await tgbot.send_file(event.chat_id, LEGEND_IMG, caption=LegendBoy, buttons=GOOD)
