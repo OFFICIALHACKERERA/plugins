@@ -88,7 +88,6 @@ async def start_hellbot():
         total = C1 + C2 + C3 + C4 + C5
         LOGS.info("••• HellBot Startup Completed •••")
         LOGS.info("••• Starting to load Plugins •••")
-        await plug_load("hellbot/plugins/assistant/*.py")
         await plug_load("hellbot/plugins/*.py")
         await plug_channel(bot, Config.PLUGIN_CHANNEL)
         LOGS.info("⚡ Your HellBot Is Now Working ⚡")
