@@ -65,3 +65,60 @@ async def help(event):
 
 
 
+@legend.bot_cmd(pattern="^/ban\\s+([\\s\\S]*)", from_users=Config.OWNER_ID)
+async def ban_botpms(event):
+    user_id, reason = await get_user_and_reason(event)
+    reply_to = await reply_id(event)
+    if not user_id:
+        return await event.client.send_message(
+            event.chat_id, "`I can't find user to ban`", reply_to=reply_to
+        )
+    if not reason:
+        return await event.client.send_message(
+            event.chat_id, "`To ban the user provide reason first`", reply_to=reply_to
+        )
+    try:
+        user = await event.client.get_entity(user_id)
+        user_id = user.id
+    except Exception as e:
+        return await event.reply(f"**Error:**\n`{e}`")
+    if user_id == Config.OWNER_ID:
+        return await event.reply("I can't ban you master")
+    check = check_is_black_list(user.id)
+    if check:
+        return await event.client.send_message(
+            event.chat_id,
+            f"#Already_banned\
+            \nUser already exists in my Banned Users list.\
+            \n**Reason For Bot BAN:** `{check.reason}`\
+            \n**Date:** `{check.date}`.",
+        )
+    msg = await ban_user_from_bot(user, reason, reply_to)
+    await event.reply(msg)
+
+
+@legend.bot_cmd(pattern="^/unban(?:\\s|$)([\\s\\S]*)", from_users=Config.OWNER_ID)
+async def ban_botpms(event):
+    user_id, reason = await get_user_and_reason(event)
+    reply_to = await reply_id(event)
+    if not user_id:
+        return await event.client.send_message(
+            event.chat_id, "`I can't find user to unban`", reply_to=reply_to
+        )
+    try:
+        user = await event.client.get_entity(user_id)
+        user_id = user.id
+    except Exception as e:
+        return await event.reply(f"**Error:**\n`{e}`")
+    check = check_is_black_list(user.id)
+    if not check:
+        return await event.client.send_message(
+            event.chat_id,
+            f"#User_Not_Banned\
+            \n👤 {_format.mentionuser(user.first_name , user.id)} doesn't exist in my Banned Users list.",
+        )
+    msg = await unban_user_from_bot(user, reason, reply_to)
+    await event.reply(msg)
+
+
+
