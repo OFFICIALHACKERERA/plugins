@@ -4,17 +4,23 @@ from ..config import Config
 
 HANDLER = Config.HANDLER
 
-# Made this class for help menu
+#################################################################################################################
+
+
 class CmdHelp:
+    """
+    The class I wrote to better generate command aids.
+    """
+
     FILE = ""
     ORIGINAL_FILE = ""
     FILE_AUTHOR = ""
     IS_OFFICIAL = True
     COMMANDS = {}
-    PREFIX = HANDLER
+    PREFIX = COMMAND_HAND_LER
     WARNING = ""
+    TYPE = ""
     INFO = ""
-    EXTRA = {}
 
     def __init__(self, file: str, official: bool = True, file_name: str = None):
         self.FILE = file
@@ -24,8 +30,8 @@ class CmdHelp:
         self.COMMANDS = {}
         self.FILE_AUTHOR = ""
         self.WARNING = ""
+        self.TYPE = ""
         self.INFO = ""
-        self.EXTRA = {}
 
     def set_file_info(self, name: str, value: str):
         if name == "name":
@@ -35,6 +41,10 @@ class CmdHelp:
         return self
 
     def add_command(self, command: str, params=None, usage: str = "", example=None):
+        """
+        Inserts commands..
+        """
+
         self.COMMANDS[command] = {
             "command": command,
             "params": params,
@@ -51,51 +61,60 @@ class CmdHelp:
         self.INFO = info
         return self
 
-    def add_extra(self, extra: str, content: str):
-        self.EXTRA[extra] = {
-            "extra": extra,
-            "content": content,
-        }
+    def add_type(self, type):
+        self.TYPE = type
         return self
 
     def get_result(self):
-        result = f"**📗 File :**  `{self.FILE}`\n"
-        if self.INFO == "":
-            if not self.WARNING == "":
-                result += f"**⚠️ Warning :**  {self.WARNING}\n\n"
+        """
+        Brings results.
+        """
+
+        result = f"**📗 File :** `{self.FILE}`\n"
+        if self.WARNING == "" and self.INFO == "":
+            result += f"**⬇️ Official:** {'✅' if self.IS_OFFICIAL else '❌'}\n\n"
         else:
-            if not self.WARNING == "":
-                result += f"**⚠️ Warning :**  {self.WARNING}\n"
-            result += f"**ℹ️ Info :**  {self.INFO}\n"
-        if self.EXTRA:
-            for extra in self.EXTRA:
-                extra = self.EXTRA[extra]
-                result += f"**{extra['extra']} :**  `{extra['content']}`\n"
-        result += "\n"
+            result += f"**⬇️ Official:** {'✅' if self.IS_OFFICIAL else '❌'}\n"
+
+            if self.INFO == "":
+                if not self.WARNING == "":
+                    result += (
+                        f"**⚠️ 𝚆𝚊𝚛𝚗𝚒𝚗𝚐 :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n\n"
+                    )
+                    result += f"**📍 Type :**  {CMD_HELP_BOT[cmd]['info']['type']}\n\n"
+            else:
+                if not self.WARNING == "":
+                    result += f"**⚠️ 𝚆𝚊𝚛𝚗𝚒𝚗𝚐 :** {self.WARNING}\n"
+                    result += f"**📍 Type:** {self.TYPE}\n"
+                    result += f"**ℹ️ Info:** {self.INFO}\n"
+
         for command in self.COMMANDS:
             command = self.COMMANDS[command]
             if command["params"] == None:
-                result += f"**🛠 Command :**  `{HANDLER[:1]}{command['command']}`\n"
+                result += (
+                    f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']}`\n"
+                )
             else:
-                result += f"**🛠 Command :**  `{HANDLER[:1]}{command['command']} {command['params']}`\n"
+                result += f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']} {command['params']}`\n"
 
             if command["example"] == None:
-                result += f"**💬 Details :**  `{command['usage']}`\n\n"
+                result += f"**💬 Details :** `{command['usage']}`\n\n"
             else:
-                result += f"**💬 Details :**  `{command['usage']}`\n"
-                result += (
-                    f"**⌨️ For Example :**  `{HANDLER[:1]}{command['example']}`\n\n"
-                )
-            CMD_INFO[f"{command['command']}"] = {"info": command['usage']}
+                result += f"**💬 Details :** `{command['usage']}`\n"
+                result += f"**⌨️ For Example :** `{COMMAND_HAND_LER[:1]}{command['example']}`\n\n"
         return result
 
     def add(self):
+        """
+        Directly adds CMD_HELP.
+        """
         CMD_HELP_BOT[self.FILE] = {
             "info": {
+                "official": self.IS_OFFICIAL,
                 "warning": self.WARNING,
+                "type": self.TYPE,
                 "info": self.INFO,
             },
-            "extra": self.EXTRA,
             "commands": self.COMMANDS,
         }
         CMD_HELP[self.FILE] = self.get_result()
@@ -108,5 +127,3 @@ class CmdHelp:
             return "or"
         elif text == "USERNAMES":
             return "<user name (s)>"
-
-# hellbot
