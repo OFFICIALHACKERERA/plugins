@@ -2,6 +2,7 @@ import os
 import datetime
 from telethon import events
 from telethon import Button, events
+from telethon.utils import pack_bot_file_id
 
 PM_IMG = "https://te.legra.ph/file/fa15573431b4d91a002c7.jpg"
 pm_caption = f"Assistant is Online \n\n"
@@ -62,6 +63,33 @@ async def help(event):
     await tgbot.send_file(event.chat_id, HELP_LOGO, caption=help_text)
         
         
+
+
+
+@tgbot.on(events.NewMessage(pattern="^/id"))
+async def _(event):
+    if event.reply_to_msg_id:
+        await event.get_input_chat()
+        r_msg = await event.get_reply_message()
+        if r_msg.media:
+            bot_api_file_id = pack_bot_file_id(r_msg.media)
+            await tgbot.send_message(
+                event.chat_id,
+                "Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(
+                    str(event.chat_id), str(r_msg.sender_id), bot_api_file_id
+                ),
+            )
+        else:
+            await tgbot.send_message(
+                event.chat_id,
+                "Current Chat ID: `{}`\nFrom User ID: `{}`".format(
+                    str(event.chat_id), str(r_msg.sender_id)
+                ),
+            )
+    else:
+        await tgbot.send_message(
+            event.chat_id, "Current Chat ID: `{}`".format(str(event.chat_id))
+        )
 
 
 
