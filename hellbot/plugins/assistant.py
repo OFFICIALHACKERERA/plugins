@@ -35,11 +35,11 @@ async def _(event):
 
 
 
-HELP_LOGO = "https://telegra.ph/file/c3e75eccaeb7f56dfae89.mp4"
+HELP_LOGO = "https://te.legra.ph/file/bd44461832cc3ee094547.jpg"
 
 
 help_text = (
-        f"**✦ C Y B Ξ R ASSISTANT HELP MENU ✦** \n"
+        f"** ASSISTANT HELP MENU ** \n"
         f"┏━━━━━━━━━━━━━━━━━━━━\n"
         f"┣[ `/start` - **Start mesajını göndərər.**\n"
         f"┣[ `/id` - **Bir qrup və ya istifadəçi ID almaq üçün.**\n"                               
