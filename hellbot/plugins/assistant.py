@@ -5,7 +5,7 @@ from telethon import events
 from telethon import Button, events
 from telethon.utils import pack_bot_file_id
 
-PM_IMG = "https://te.legra.ph/file/fa15573431b4d91a002c7.jpg"
+PM_IMG = "https://te.legra.ph/file/bd44461832cc3ee094547.jpg"
 pm_caption = f"Assistant is Online \n\n"
 pm_caption += f"**╭───────────**\n"
 pm_caption += f"┣❤️‍🔥 Telethon : `1.15.0` \n"
@@ -22,7 +22,7 @@ async def _(event):
 
 
 PING_IMG = os.environ.get(
-    "BOT_PING_PIC", "https://te.legra.ph/file/fa15573431b4d91a002c7.jpg"
+    "BOT_PING_PIC", "https://te.legra.ph/file/bd44461832cc3ee094547.jpg"
 )
 ms = 4
 
