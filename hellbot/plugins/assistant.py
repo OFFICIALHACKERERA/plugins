@@ -39,15 +39,14 @@ async def _(event):
 HELP_LOGO = "https://te.legra.ph/file/bd44461832cc3ee094547.jpg"
 
 
-HELP_caption = f"Assistant is Online \n\n"
-HELP_caption += f"**╭───────────**\n"
-HELP_caption += f"┣❤️‍🔥 Telethon : `1.15.0` \n"
-HELP_caption += f"┣❤️‍🔥 Version  : `2.0` \n"
-HELP_caption += f"┣❤️‍🔥 Channel  : [ᴄʜᴀɴɴᴇʟ](https://t.me/Broken_Heart_72)\n"
-HELP_caption += f"┣❤️‍🔥 Support  : [sᴜᴘᴘᴏʀᴛ](https://t.me/HEPPYLIFI)\n"
-HELP_caption += f"┣❤️‍🔥 Owner    : [ᴏғғɪᴄɪᴀʟ ʜᴀᴄᴋᴇʀ](https://t.me/OFFICIALHACKERERA)\n"
-HELP_caption += f"╰────────────\n"
 
+HELP_caption = f"Assistant Help Menu\n\n"
+HELP_caption += f"**╭───────────**\n"
+HELP_caption += f"┣🔥 /alive\n"
+HELP_caption += f"┣❤️‍🔥 /help \n"
+HELP_caption += f"┣🔥 /id \n"
+HELP_caption += f"┣❤️‍🔥 /ping \n"
+HELP_caption += f"╰────────────\n"
 
         
         
