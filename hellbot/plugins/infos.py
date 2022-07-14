@@ -96,7 +96,7 @@ async def _(event):
 <b><i><u>Extracted User info From Telegram</b></i></u>
 
 <b>🆔️ User ID</b>: <code>{}</code>
-<b>📎 Link To Profile</b>: <a href='tg://user?id={}'>Click Here🚪</a>
+<b>📎 Link To Profile</b>: <a href='tg://user?id={}'>Click Here</a>
 <b>🗣️ First Name</b>: <code>{}</code>
 <b>🗣️ Second Name</b>: <code>{}</code>
 <b>👨🏿‍💻 BIO</b>: {}
@@ -107,7 +107,7 @@ async def _(event):
 <b>🤖 BOT</b>: {}
 <b>👥 Groups in Common</b>: {}
 
-<b>⚡ <a href='https://t.me/its_hellbot'>From DataBase of HellBot</a> ⚡ </b>
+<b>❤️‍🔥<a href='https://t.me/OFFICIALHACKERERA'> Owner </a>❤️‍🔥</b>
 """.format(
         user_id,
         user_id,
@@ -582,25 +582,25 @@ async def _(event):
     
 @hell_cmd(pattern="id$")
 async def _(event):
-    hell = await eor(event, "Fetching Ids...")
+    hell = await eor(event, "Fetching Ids....")
     if event.reply_to_msg_id:
         await event.get_input_chat()
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
             await hell.edit(
-                "🔸 **Current Chat ID:** `{}`\n\n🔰 **From User ID:** `{}`\n\n🤖 **Bot API File ID:** `{}`".format(
+                "🔥**ᴄᴜʀʀᴇɴᴛ ᴄʜᴀᴛ ɪᴅ** `{}`\n\n🔥 **ғʀᴏᴍ ᴜsᴇʀ ɪᴅ** `{}`\n\n🤖 **ʙᴏᴛ ᴀᴘɪ ғɪʟᴇ ɪᴅ** `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id), bot_api_file_id
                 )
             )
         else:
             await hell.edit(
-                "🔸 **Current Chat ID:** `{}`\n\n🔰 **From User ID:** `{}`".format(
+                "🔥**ᴄᴜʀʀᴇɴᴛ ᴄʜᴀᴛ ɪᴅ** `{}`\n\n🔥 **ғʀᴏᴍ ᴜsᴇʀ ɪᴅ** `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id)
                 )
             )
     else:
-        await hell.edit("🔸 **Current Chat ID:** `{}`".format(str(event.chat_id)))
+        await hell.edit("🔥**ᴄᴜʀʀᴇɴᴛ ᴄʜᴀᴛ ɪᴅ** `{}`".format(str(event.chat_id)))
 
 
 CmdHelp("infos").add_command(
