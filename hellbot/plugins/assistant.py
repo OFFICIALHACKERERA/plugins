@@ -35,7 +35,33 @@ async def _(event):
 
 
 
+HELP_LOGO = "https://telegra.ph/file/c3e75eccaeb7f56dfae89.mp4"
 
+
+help_text = (
+        f"**✦ C Y B Ξ R ASSISTANT HELP MENU ✦** \n"
+        f"┏━━━━━━━━━━━━━━━━━━━━\n"
+        f"┣[ `/start` - **Start mesajını göndərər.**\n"
+        f"┣[ `/id` - **Bir qrup və ya istifadəçi ID almaq üçün.**\n"                               
+        f"┣[ `/tr` - **Tərcümə edər.**\n"
+        f"┣[ `/help` - **Bu mesajı atar.**\n"
+        f"┣[ `/purge` - **Qeyd etdiyiniz mesajdan sonraki mesajları təmizləyər.**\n"
+        f"┣[ `/del` - **Cavab verdiyiniz mesajı silər.**\n"
+        f"┣[ `/ban` - **Bir istifadəçini ban etmək üçün.**\n"
+        f"┣[ `/unban` - **Bir istifadəçinin banını açar.**\n"
+        f"┣[ `/promote` - **Bir istifadəçini admin etmək üçün.**\n"
+        f"┣[ `/demote` - **Bir istifadəçinin adminlik hüququnu almaq üçün.**\n"
+        f"┣[ `/pin` - **Cavab verdiyiniz mesajı sabitləyər.**\n"
+        f"┣[ `/lyrics` - **Adını yazdığınız musiqinin sözlərini axtarar.**\n"
+        f"┗━━━━━━━━━━━━━━━━━━━━\n"
+        )
+        
+        
+@tgbot.on(events.NewMessage(pattern="^/help"))
+async def help(event):
+    await tgbot.send_file(event.chat_id, HELP_LOGO, caption=help_text)
+        
+        
 
 
 
