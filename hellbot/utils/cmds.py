@@ -6,6 +6,7 @@ HANDLER = Config.HANDLER
 
 #################################################################################################################
 
+COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r".")
 
 class CmdHelp:
     """
