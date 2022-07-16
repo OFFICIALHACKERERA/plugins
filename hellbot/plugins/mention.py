@@ -6,7 +6,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 menu_category = "extra"
 
 
-@legend.legend_cmd(
+@hell_cmd(
     pattern="(tagall|all)(?:\s|$)([\s\S]*)",
     command=("tagall", menu_category),
     info={
@@ -29,7 +29,7 @@ async def tagall(event):
     await event.delete()
 
 
-@legend.legend_cmd(
+@hell_cmd(
     pattern="(luckydraw|ld)(?:\s|$)([\s\S]*)",
     command=("luckydraw", menu_category),
     info={
@@ -57,7 +57,7 @@ async def luckydraw(event):
     await event.delete()
 
 
-@legend.legend_cmd(
+@hell_cmd(
     pattern="report$",
     command=("report", menu_category),
     info={
@@ -79,7 +79,7 @@ async def report(event):
     await event.delete()
 
 
-@legend.legend_cmd(
+@hell_cmd(
     pattern="men ([\s\S]*)",
     command=("mention", menu_category),
     info={
