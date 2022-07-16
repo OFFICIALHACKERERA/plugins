@@ -23,15 +23,4 @@ async def bot_start(event):
     buttons = [
         (Button.url("🔱 Repo 🔱", "https://github.com/LEGEND-AI/LEGENDBOT"),),
     ]
-    try:
-        await event.client.send_file(
-            PM_IMG,
-            caption=pm_caption,
-            link_preview=False,
-            buttons=buttons,
-            reply_to=reply_to,
-        )
-    except Exception as e:
-            await event.client.send_message(
-                f"**Error**\nThere was a error while using **alive**. `{e}`",
-            )
+    
