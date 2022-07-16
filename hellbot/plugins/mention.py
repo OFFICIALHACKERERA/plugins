@@ -1,6 +1,6 @@
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from userbot import legend
+
 
 
 menu_category = "extra"
