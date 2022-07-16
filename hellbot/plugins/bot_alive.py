@@ -15,7 +15,7 @@ pm_caption += f"╰────────────\n"
 pm_caption += f"       »»» [『Lêɠêɳ̃dẞø†』](https://t.me/LegendBot_XD) «««"
 
 
-@legend.bot_cmd(
+@hell_cmd(
     pattern=f"^/alive( )?([\s]+)?$",
     incoming=True,
 )
