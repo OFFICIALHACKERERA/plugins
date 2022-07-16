@@ -20,10 +20,6 @@ pm_caption += f"       »»» [『Lêɠêɳ̃dẞø†』](https://t.me/LegendBo
     incoming=True,
 )
 async def bot_start(event):
-    chat = await event.get_chat()
-    if check_is_black_list(chat.id):
-        return
-    reply_to = await reply_id(event)
     buttons = [
         (Button.url("🔱 Repo 🔱", "https://github.com/LEGEND-AI/LEGENDBOT"),),
     ]
