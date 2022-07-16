@@ -21,7 +21,7 @@ pm_caption += f"       »»» [『Lêɠêɳ̃dẞø†』](https://t.me/LegendBo
 )
 async def bot_start(event):
     chat = await event.get_chat()
-    await legend.get_me()
+    await .get_me()
     if check_is_black_list(chat.id):
         return
     reply_to = await reply_id(event)
