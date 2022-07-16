@@ -25,7 +25,6 @@ async def bot_start(event):
     ]
     try:
         await event.client.send_file(
-            chat.id,
             PM_IMG,
             caption=pm_caption,
             link_preview=False,
