@@ -1,18 +1,5 @@
 from telethon import Button
 
-from userbot import Config, legend, legendversion
-
-from ..core.logger import logging
-from ..helpers import reply_id
-from ..plugins import mention
-from ..sql_helper.bot_blacklists import check_is_black_list
-from . import BOTLOG, BOTLOG_CHATID
-
-LOGS = logging.getLogger(__name__)
-
-menu_category = "bot"
-botusername = Config.BOT_USERNAME
-
 
 PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
 pm_caption = f"⚜『Lêɠêɳ̃dẞø†』Is Ôñĺîne⚜ \n\n"
