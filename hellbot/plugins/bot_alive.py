@@ -32,8 +32,6 @@ async def bot_start(event):
             reply_to=reply_to,
         )
     except Exception as e:
-        if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID,
                 f"**Error**\nThere was a error while using **alive**. `{e}`",
             )
