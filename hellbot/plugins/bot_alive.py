@@ -1,6 +1,6 @@
 from telethon import events
 
-from userbot import *
+from hellbot import *
 
 from . import *
 
