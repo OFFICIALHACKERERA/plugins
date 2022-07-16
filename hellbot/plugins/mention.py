@@ -2,7 +2,6 @@ from telethon.tl.types import ChannelParticipantsAdmins
 
 from userbot import legend
 
-from ..helpers.utils import get_user_from_event, reply_id
 
 menu_category = "extra"
 
