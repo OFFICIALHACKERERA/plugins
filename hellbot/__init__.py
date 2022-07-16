@@ -9,6 +9,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 from hellbot.clients.session import H2, H3, H4, H5, Hell, HellBot
 from hellbot.config import Config
 
+bot = legend
 
 StartTime = time.time()
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
