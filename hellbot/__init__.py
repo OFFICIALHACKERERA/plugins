@@ -2,7 +2,6 @@ import heroku3
 import os
 import sys
 import time
-from telethon import TelegramClient
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
 
