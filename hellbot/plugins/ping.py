@@ -3,7 +3,7 @@ import datetime
 
 from . import *
 
-PING_PIC = "https://telegra.ph/file/e15a2fe1430358e26713c.jpg"
+PING_PIC = "https://te.legra.ph/file/a59da36828333262c9848.jpg"
 
 @bot.on(admin_cmd(pattern="ping$", outgoing=True))
 @bot.on(sudo_cmd(pattern="ping$", allow_sudo=True))
