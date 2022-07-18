@@ -10,7 +10,7 @@ from hellbot.random_strings import *
 from hellbot.version import __hell__
 from hellbot.sql.gvar_sql import gvarstat
 from telethon import version
-from telethon import TelegramClient
+
 
 D3VIL_USER = bot.me.first_name
 d3krish = bot.uid
