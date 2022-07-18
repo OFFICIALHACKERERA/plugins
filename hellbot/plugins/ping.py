@@ -3,7 +3,7 @@ import datetime
 
 from . import *
 
-PING_PIC = "https://te.legra.ph/file/dc49871963cbe0ea65fdd.mp4"
+PING_PIC = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
 
 @bot.on(admin_cmd(pattern="ping$", outgoing=True))
 @bot.on(sudo_cmd(pattern="ping$", allow_sudo=True))
@@ -11,11 +11,11 @@ async def _(event):
     if event.fwd_from:
         return
     start = datetime.datetime.now()
-    event = await eor(event, "__**⚡ Pong! ⚡**")
+    event = await eor(event, "__**(❛ ⚡️ρσɳɠ⚡️ ❜!**")
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     if PING_PIC:
-d3vil_caption = f"⚡️ρσɳɠ🦋**\n\n⚡️{ms}\n⚡**๏ฬภєг [๏ฬภєг](https://t.me/OFFICIALHACKERERA)"
+        d3vil_caption = f"⚡️ρσɳɠ🦋**\n\n⚡️{ms}\n⚡**๏ฬภєг [𝙊𝙛𝙛𝙞𝙘𝙞𝙖𝙡 𝙃𝙖𝙘𝙠𝙚𝙧](https://t.me/OFFICIALHACKERERA)"
         await event.client.send_file(
             event.chat_id, PING_PIC, caption=d3vil_caption
         )
