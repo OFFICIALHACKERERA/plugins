@@ -12,8 +12,6 @@ from hellbot.sql.gvar_sql import gvarstat
 from telethon import version
 
 
-D3VIL_USER = bot.me.first_name
-d3vil_mention = f"[{D3VIL_USER}](tg://user?id={})"
 hell_logo = "./hellbot/resources/pics/hellbot_logo.jpg"
 cjb = "./hellbot/resources/pics/cjb.jpg"
 restlo = "./hellbot/resources/pics/rest.jpeg"
