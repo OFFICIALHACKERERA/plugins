@@ -3,7 +3,7 @@ import datetime
 
 from . import *
 
-PING_PIC = "https://te.legra.ph/file/4f730af88f1d7ec343386.jpg"
+PING_PIC = "https://telegra.ph/file/e15a2fe1430358e26713c.jpg"
 
 @bot.on(admin_cmd(pattern="ping$", outgoing=True))
 @bot.on(sudo_cmd(pattern="ping$", allow_sudo=True))
@@ -11,7 +11,7 @@ async def _(event):
     if event.fwd_from:
         return
     start = datetime.datetime.now()
-    event = await eor(event, "__**(❛ ⚡️ρσɳɠ⚡️ ❜!**")
+    event = await eor(event, "__**⚡ Pong! ⚡**")
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     if PING_PIC:
