@@ -1,6 +1,6 @@
 import datetime
 import time
-rom telethon import TelegramClient
+from telethon import TelegramClient
 from hellbot import *
 from hellbot.clients import *
 from hellbot.config import Config
