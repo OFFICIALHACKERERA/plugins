@@ -15,7 +15,7 @@ async def _(event):
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     if PING_PIC:
-        d3vil_caption = f"💞Pong💞**\n\n   🔸️ {ms}\n   🔹️ **𝙼𝚢** **𝙼𝚊𝚜𝚝𝚎𝚛** ~『{d3vil_mention}』"
+        d3vil_caption = f"💞Pong💞**\n\n   🔸️ {ms}\n   🔹️ **𝙼𝚢** **𝙼𝚊𝚜𝚝𝚎𝚛** ~『{legend_mention}』"
         await event.client.send_file(
             event.chat_id, PING_PIC, caption=d3vil_caption
         )
