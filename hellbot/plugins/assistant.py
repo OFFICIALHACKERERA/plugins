@@ -22,39 +22,21 @@ async def _(event):
 
 
 
+PING_IMG = os.environ.get(
+    "BOT_PING_PIC", "https://te.legra.ph/file/bd44461832cc3ee094547.jpg"
+)
+ms = 4
+
+
+OFFICIALHACKER = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n    {ms}\n    ❝𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫❞ ~『soon』"
 
 
 @tgbot.on(events.NewMessage(pattern="^/ping"))
-async def bot_start(event):
-    chat = await event.get_chat()
-    await legend.get_me()
-    if check_is_black_list(chat.id):
-        return
-    reply_to = await reply_id(event)
-    buttons = [(Button.url("⚜ Lêɠêɳ̃dẞø† ⚜", "https://t.me/LegendBot_XD"))]
-    PM_IMG = (
-        gvarstatus("BOT_PING_PIC")
-        or "https://telegra.ph/file/5c898421fdef6f53aab0a.jpg"
-    )
-    start = datetime.now()
-    end = datetime.now()
-    ms = (end - start).microseconds / 1000
-    pm_caption = f"**꧁•⊹٭Ping٭⊹•꧂**\n\n   ⚜ {ms}\n   ⚜ ❝𝐌𝐲 𝐌𝐚𝐬𝐭𝐞𝐫❞ ~『』"
-    try:
-        await event.client.send_file(
-            chat.id,
-            PM_IMG,
-            caption=pm_caption,
-            link_preview=False,
-            buttons=buttons,
-            reply_to=reply_to,
-        )
-    except Exception as e:
-        if BOTLOG:
-            await event.client.send_message(
-                BOTLOG_CHATID,
-                f"**Error**\nThere was a error while using **alive**. `{e}`",
-            )
+async def _(event):
+    GOOD = [[Button.url(" Owner ", "https://t.me/OFFICIALHACKERERA")]]
+    await tgbot.send_file(event.chat_id, PING_IMG, caption=OFFICIALHACKER, buttons=GOOD)
+
+
 
 
 
