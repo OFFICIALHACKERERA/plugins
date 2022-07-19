@@ -2,7 +2,6 @@ import asyncio
 import os
 
 
-from .data import _sudousers_list
 
 
 # https://t.me/c/1220993104/623253
