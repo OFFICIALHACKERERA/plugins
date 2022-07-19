@@ -15,6 +15,8 @@ async def _(event):
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "**(❛ ᑭσɳց ❜!**")
+    end = datetime.datetime.now()
+    ms = (end - start).microseconds / 1000
     if LEGEND_IMG:
         legend_caption = (
             f"**❤️‍🔥 PONG ❤️‍🔥**UP TIME {ms}"
