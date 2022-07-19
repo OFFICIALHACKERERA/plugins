@@ -7,7 +7,7 @@ from ..core import CMD_INFO, GRP_INFO, PLG_INFO
 from ..core.managers import eod, eor
 from ..helpers.utils import reply_id
 
-cmdprefix = Config.HANDLER
+
 
 menu_category = "tools"
 
