@@ -21,10 +21,8 @@ from telethon.errors import (
 )
 
 
-from ..helpers.utils.events import checking
-from ..helpers.utils.format import paste_message
-from ..helpers.utils.utils import runcmd
-from ..sql_helper.globals import gvarstatus
+
+
 from . import BOT_INFO, CMD_INFO, GRP_INFO, LOADED_CMDS, PLG_INFO
 from .cmdinfo import _format_about
 from .data import _sudousers_list, blacklist_chats_list, sudo_enabled_cmds
