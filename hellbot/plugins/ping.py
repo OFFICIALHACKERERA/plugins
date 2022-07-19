@@ -3,7 +3,9 @@ import datetime
 
 from . import *
 
-
+start = datetime.datetime.now()
+end = datetime.datetime.now()
+ms = (end - start).microseconds / 1000
 
 LEGEND_IMG = "https://te.legra.ph/file/bd44461832cc3ee094547.jpg"
 
@@ -15,8 +17,6 @@ async def _(event):
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "**(❛ ᑭσɳց ❜!**")
-    end = datetime.datetime.now()
-    ms = (end - start).microseconds / 1000
     if LEGEND_IMG:
         legend_caption = (
             f"**❤️‍🔥 PONG ❤️‍🔥**UP TIME {ms}"
