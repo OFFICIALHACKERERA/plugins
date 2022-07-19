@@ -16,8 +16,7 @@ async def _(event):
         return
     event = await edit_or_reply(event, "**(❛ ᑭσɳց ❜!**")
     if LEGEND_IMG:
-        legend_caption = f"💞Pong💞**\n\n   🔸️ {ms}\n   🔹️ **𝙼𝚢** **𝙼𝚊𝚜𝚝𝚎𝚛** ~『』"
-        
+        legend_caption = f"⚡️ρσɳɠ🦋**\n\n⚡️{ms}\n⚡**"
         await event.client.send_file(event.chat_id, LEGEND_IMG, caption=legend_caption)
         await event.delete()
 
