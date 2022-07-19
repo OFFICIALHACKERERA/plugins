@@ -8,7 +8,6 @@ except ModuleNotFoundError:
     install_pip("urlextract")
     from urlextract import URLExtract
 
-from ..Config import Config
 
 extractor = URLExtract()
 
