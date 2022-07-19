@@ -11,8 +11,20 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery
 from youtubesearchpython import VideosSearch
 
-
-
+from ..Config import Config
+from ..core.session import legend
+from ..helpers.functions import rand_key
+from ..helpers.functions.utube import (
+    download_button,
+    get_yt_video_id,
+    get_ytthumb,
+    result_formatter,
+    ytsearch_data,
+)
+from ..plugins import ALIVE_NAME, USERID, Legend_grp, mention
+from ..sql_helper.globals import gvarstatus
+from . import CMD_INFO, GRP_INFO, PLG_INFO, check_owner
+from .logger import logging
 
 LOGS = logging.getLogger(__name__)
 
