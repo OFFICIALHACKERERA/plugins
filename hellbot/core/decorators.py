@@ -4,7 +4,7 @@ from telethon.errors import FloodWaitError, MessageNotModifiedError
 from telethon.events import CallbackQuery
 
 
-from ..sql_helper.globals import gvarstatus
+
 
 
 def check_owner(func):
