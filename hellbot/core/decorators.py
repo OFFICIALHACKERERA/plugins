@@ -3,7 +3,7 @@ import asyncio
 from telethon.errors import FloodWaitError, MessageNotModifiedError
 from telethon.events import CallbackQuery
 
-from ..Config import Config
+
 from ..sql_helper.globals import gvarstatus
 
 
