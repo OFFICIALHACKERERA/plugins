@@ -5,7 +5,7 @@ from . import *
 
 
 
-LEGEND_IMG = "https://te.legra.ph/file/a59da36828333262c9848.jpg"
+LEGEND_IMG = "https://te.legra.ph/file/bd44461832cc3ee094547.jpg"
 
 
 
@@ -16,8 +16,10 @@ async def _(event):
         return
     event = await edit_or_reply(event, "**(❛ ᑭσɳց ❜!**")
     if LEGEND_IMG:
-     
-        await event.client.send_file(event.chat_id, LEGEND_IMG)
+     legend_caption = (
+            f"**💞Pong💞**"
+        )
+        await event.client.send_file(event.chat_id, LEGEND_IMG, caption=legend_caption)
         await event.delete()
 
 
